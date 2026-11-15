@@ -266,7 +266,8 @@
 
             <div class="card-grid" style="margin-top: 20px;">
                 <div class="card"><h3 class="card_h3">어떤 데이터가 필요할까?</h3><p class="care_p">rice.csv</p></div>
-                <div class="card"><h3>PAPAS란?</h3><p>팝스는 학생들의 전반적인 신체 능력을 객관적으로 확인하기 위한 제도로, 심폐지구력, 근력과 근지구력, 유연성, 순발력, 비만정도 등을 종합적으로 측정해서 등급으로 판단</p></div>
+                <div class="card"><h3>쌀 종류 예측?</h3><p>A정미소에서는 요리 종류에 따라 각기 다른 종류의 쌀 사용을 위해
+쌀 데이터를 이용하여 쌀 종류를 예측하고자 한다.</p></div>
             </div>
         </section>
 
@@ -274,12 +275,25 @@
             <h1>데이터 가져오기</h1>
             <p class="section-desc">분석 데이터 문제정의</p>
             <div class="card-grid">
-                <div class="card"><h3>문제정의</h3><p> PAPS(팝스)데이터를 수집해서 PAPS(팝스) 등급을 분류하는 PAPS(팝스) 등급 분류 모델을 구현해보자.</p></div>
+                <div class="card"><h3>문제정의</h3><p> 쌀 데이터를 활용해서, 쌀 종류를 예측하는 인공지능 모델을 만들어보자</p></div>
                 <div class="card"><h3> PAPS 등급측정은?</h3><p> 심폐지구력, 유연성, 근력과 근지구력, 순발력, 비만정도를 측정 =>1등급(아주높음), 2등급(높음),3등급(보통),4등급(낮음),5등급(매우낮음)</p></div>
-                <div class="card"><h3>데이터 가져오기</h3><p><img src="images/5(한글이 있는경우 오류가 나면 cp949).png" alt=""></p>
-                <p class="card_p">🍄데이터가 한글인경우 업로드시 오류의 원인이 될수 있습니다. 인코딩을 CP494(한글)로 변경!!</p>
-                </div>
-                <div class="card"><h3>🧯 종속변수는?</h3><p class="hide">PAPS등급 분류 </p></div>
+               <div class="card">
+                    <h3>데이터 컬럼명</h3>
+                    <ul style="list-style-type: disc; padding-left: 20px; line-height: 1.6; margin: 0;">
+                        <li><strong>id</strong> : 고유번호</li>
+                        <li><strong>area</strong> : 면적</li>
+                        <li><strong>vertical_length</strong> : 장축길이</li>
+                        <li><strong>horizontal_length</strong> : 보조축길이</li>
+                        <li><strong>eccentricity</strong> : 이심률</li>
+                        <li><strong>convex_area</strong> : 볼록면적</li>
+                        <li><strong>diameter</strong> : 지름</li>
+                        <li><strong>perimeter</strong> : 둘레</li>
+                        <li><strong>roundness</strong> : 원형율</li>
+                        <li><strong>thickness</strong> : 두께</li>
+                        <li><strong>rice_type</strong> : 쌀종류</li>
+                    </ul>
+        </div>
+               
             </div>
         </section>
 
@@ -288,25 +302,45 @@
             <h1>기초정보 분석</h1>
             <p class="section-desc">데이터의 평균, 중앙값, 최빈값, 표준편차 등 핵심 통계 지표를 한눈에 파악합니다.</p>
             <div class="card-grid">
-                <div class="card"><h3>🧯문제</h3><p>전체 데이터 정보에 대한 설명으로 옳은 것은? <span class="hide">3</span></p>
+                <div class="card"><h3>🧯문제</h3><p>종속변수(output 컬럼)란 독립변수(input 컬럼)를 바탕으로 예측하는 대상을 의미한다.
+다음 중 이 과제를 해결하는 데 필요한 종속변수를 고르시 <span class="hide">4</span></p>
                     <ol>
-                        <li><span>1</span>15,000개의 변수로 구성되어 있다</li>
-                        <li><span>2</span>13개의 결측치가 있다</li>
+                        <li><span>1</span>지름(diameter)</li>
+                        <li><span>2</span>쌀번호</li>
                         <li><span>3</span>중복되는 관측치는 없다</li>
-                        <li><span>4</span>데이터 유형에서 수치형은 5개이다</li>
-                        <li><span>5</span>데이터 유형에서 범주형은 9개이다</li>
+                        <li><span>4</span>두께(thickness)</li>
+                        <li><span>5</span>쌀종류(rice_type</li>
                     </ol>
-                  <div class="hint"><img src="images/1.png" alt=""></div>
+                  
                 </div>
-                   
-                <div class="card"><h3>🧯문제</h3><p>심폐지구력 변수의 중앙값(median)은 얼마인가? </p>
+                     <div class="card"><h3>🧯문제</h3><p>모델 학습시 예측에 영향을 미치치 않는 단순 식별자로 제외 칼럼으로 지정해야 하는 변수는? <span class="hide">4</span></p>
+                    <ol>
+                        <li><span>1</span>면적(area)</li>
+                        <li><span>2</span>고유번호(ID)</li>
+                        <li><span>3</span>원형율(roundness)</li>
+                        <li><span>4</span>이심률(eccentricity)</li>
+                 
+                    </ol>
+                  
+                </div>
+                <div class="card"><h3>🧯문제</h3><p>데이터의 전체 개수(observation)를 작성하시오. </p>
+                   <p><input type="text" placeholder="값을 입력 하세요"><span class="point">💊힌트</span></p>
+                   <p class="hint"><img src="images/1.png" alt=""></p>
+                </div>
+
+                <div class="card"><h3>🧯문제</h3><p>'장축길이(vertical_length)의 평균(mean)를 작성하시오. </p>
                    <p><input type="text" placeholder="값을 입력 하세요"><span class="point">💊힌트</span></p>
                    <p class="hint"><img src="images/2.png" alt=""></p>
                 </div>
 
-                <div class="card"><h3>🧯문제</h3><p>순발력 변수의 최빈값은 얼마인가? </p>
+                <div class="card"><h3>🧯문제</h3><p>전체 결측치 개수를 작성하시오. </p>
                    <p><input type="text" placeholder="값을 입력 하세요"><span class="point">💊힌트</span></p>
-                   <p class="hint"><img src="images/3.png" alt=""></p>
+                   <p class="hint"><img src="images/6.png" alt=""></p>
+                </div>
+
+                <div class="card"><h3>🧯문제</h3><p>면적(area)의 평균(mean)을 소수점 둘째 자리까지 작성하시오. </p>
+                   <p><input type="text" placeholder="값을 입력 하세요"><span class="point">💊힌트</span></p>
+                   <p class="hint"><img src="images/7.png" alt=""></p>
                 </div>
             </div>
         </section>
@@ -315,32 +349,42 @@
             <h1>시각화분석</h1>
             <p class="section-desc">데이터 내 누락된 값(NaN)의 분포와 정상 범위를 벗어난 아웃라이어를 찾아냅니다.</p>
             <div class="card-grid">
-                <div class="card"><h3>🧯문제</h3><p>유연성과 양의 상관관계가 가장 높은 변수 이름과 상관계수는?(반올림하여 소숫점 둘째 자리까지)[히트맵] </p>
-                   <p><input type="text" placeholder="변수명,양의 상관관계"><span class="point">💊힌트</span></p>
+                <div class="card"><h3>🧯문제</h3><p> '이심률(eccentricity)과 가장 큰 음의 상관관계(correlation)를 가지는 변수를 고르시오. 
+                    [히드맵]  </p>
+                   <ul style="list-style-type: disc; padding-left: 20px; line-height: 1.6; margin: 0;">
+                        <li><strong>horizontal_length</strong> : 보조축길이</li>
+                        <li><strong>vertical_length</strong> : 장축길이</li>
+                        <li><strong>area</strong> : 면적</li>
+                        <li><strong>perimeter</strong> : 둘레</li>
+                    </ul>
+                    <p><input type="text" placeholder="변수명"><span class="point">💊힌트</span></p>
+                   <p class="hint"><img src="images/3.png" alt=""></p>
+                </div>
+
+                 <div class="card"><h3>🧯문제</h3><p>  가장높은 양의 상관관계(correlation)를 보이는 두 변수의 조합을 고르시오. 
+                    [히드맵]  </p>
+                   <ul style="list-style-type: disc; padding-left: 20px; line-height: 1.6; margin: 0;">
+                        <li><strong>면적(area)</strong> : 블록면적</li>
+                        <li><strong>장축길이(vertical_length)</strong> : 보조축길이(horizontal_length)</li>
+                        <li><strong>면적(area)</strong> : 이심률</li>
+                        <li><strong>고유번호(id)</strong> : 둘레(perimeter)</li>
+                    </ul>
+                    <p><input type="text" placeholder="변수명"><span class="point">💊힌트</span></p>
+                   <p class="hint"><img src="images/8.png" alt=""></p>
+                </div>
+
+                
+                <div class="card"><h3>🧯문제</h3><p>eccentricity(이심률)에서 한국쌀중 이심률이 0.94인 데이터의 갯수는? [분포차트] </p>
+                   <p><input type="text" placeholder=""><span class="point">💊힌트</span></p>
                    <p class="hint"><img src="images/4.png" alt=""></p>
                 </div>
-                
-                <div class="card"><h3>🧯문제</h3><p>PAPS등급이 1등급인 BMI의 중앙값은? [박스차트] </p>
+
+                <div class="card"><h3>🧯문제</h3><p>Y칼럼 eccentricity, X칼럼 rice_type 로 하고 한국쌀의 min값을 작성하시오? [박스차트] </p>
                    <p><input type="text" placeholder=""><span class="point">💊힌트</span></p>
                    <p class="hint"><img src="images/5.png" alt=""></p>
                 </div>
 
-                <div class="card"><h3>🧯문제</h3><p>PAPS 등급이 2등급인 여학생의 키의 최솟값은?[박스차트] </p>
-                   <p><input type="text" placeholder=""><span class="point">💊힌트</span></p>
-                   <p class="hint"><img src="images/6.png" alt=""></p>
-                </div>
-
-                <div class="card">
-                    <h3>🧯문제</h3><p>시도가 서울인 남학생의 BMI최댓값은? [분포차트]</p>
-                    <p><input type="text" placeholder=""><span class="point">💊힌트</span></p>
-                    <p class="hint"><img src="images/7.png" alt=""></p>
-                </div>
-            
-                <div class="card">
-                    <h3>🧯문제</h3><p>시도가 제주인 학생중 몸무게가 56.8-57.2 구간의 학생수는?[분포차트] </p>
-                    <p><input type="text" placeholder=""><span class="point">💊힌트</span></p>
-                    <p class="hint"><img src="images/8.png" alt=""></p>
-                </div>
+              wlrma
             </div>
         </section>
 
@@ -366,9 +410,17 @@
             <h1>데이터 가공</h1>
             <p class="section-desc">결측치와 중복 데이터를 처리하고 정돈된 형태로 정제합니다.</p>
             <div class="card-grid">
-                <div class="card"><h3>데이터 가공</h3><p><img src="images/9.png" alt=""></p>
-                   <p>📌 범주형 데이터는 최빈값(most_frequent) , 수치형 데이터는 평균(mean)이나 중앙값(median)을 이용해 결측치를 대체해야 합니다</p>
-                   <p>📌 input 컬럼 에서 object 유형은 인코더를 sparse로 선택</p>
+                <div class="card"><h3>🧯문제</h3>
+                   <p>모든 변수의 결측치(missing cells)를 다음 가이드에 따라 처리한 후, "면적(area)"의 결
+측치(missing cells)를 대체하는 값을 작성하시오</p>
+                   <ul style="list-style-type: disc; padding-left: 20px; line-height: 1.6; margin: 10px 0;">
+                    <li>종속변수를 제외한 모든 변수의 결측치(missing cells)를 처리하시오.</li>
+                    <li>수치형 데이터로 구성된 변수는 중앙값(median)로 대체하시오.</li>
+                    <li>범주형 데이터로 구성된 변수는 최빈값(most_frequent)으로 대체하시오.</li>
+                    <li>수행 후 기존 변수는 삭제하고 [가공 데이터 저장]을 클릭하여 가공된 데이터를 저장하시오.</li>
+               </ul>
+                      <p><input type="text" placeholder=""><span class="point">💊힌트</span></p>
+                   <p class="hint"><img src="images/9.png" alt=""></p>
                 </div>
             </div>
         </section>
@@ -386,14 +438,47 @@
             <div class="card-grid">
                 <div class="card">
                     <h3>딥러닝 학습</h3>
-                    <p><img src="images/10.png" alt=""></p>
-                    <p><img src="images/11.png" alt=""></p>
-                    <p class="section-desc">"object"로 데이터 유형 category, 디코더 선택 sparse로 한다 <br/>
-                    컴퓨터는 문자나 단어를 직접 이해하지 못하기 때문에, 범주형 데이터를 학습할 때 원-핫 인코딩(One-Hot Encoding)이라는 방식을 거칩니다.<br>
-                    sparse 디코더를 선택하면, 컴퓨터에게 "0이 아닌 중요한 값(1)의 위치만 압축해서 기억하고, 나머지 수많은 0들은 굳이 메모리에 다 차지게 저장하지 마!" 라고 지시하는 것과 같습니다.<br>
-                    학습 속도도 빨라지고 메모리와 성능의 낭비가 적어지는 효율성이 있습니다.
-                    </p>
-                    <h3>🧯문제</h3><p>학습후 정확도는 몇%인지 작성하고 소숫점 둘째자리까지 입력</p>
+                   
+                    <h3>🧯문제</h3><p>다음 가이드에 따라 딥러닝 모델을 학습하고, 해당 모델의 정확도(Accuracy)를 작성하
+시오.</p>
+                    <div style="width: 100%; box-sizing: border-box; background-color: #E5E5E5; border: 1px solid #999999; padding: 16px; margin: 15px 0; font-weight: bold; border-radius: 6px; overflow-wrap: break-word;">
+                <ul style="padding-left: 20px; line-height: 1.6; margin: 0;">
+                    <li>[AI모델 학습] 메뉴를 활용하시오.</li>
+                    <li>작업 데이터 선택:
+                        <ul style="list-style-type: circle; padding-left: 20px; margin: 5px 0 0 0;">
+                            <li>문항 5에서 처리한 데이터를 사용하시오.</li>
+                        </ul>
+                    </li>
+                    <li>Input 칼럼:
+                        <ul style="list-style-type: circle; padding-left: 20px; margin: 5px 0 0 0;">
+                            <li>"고유번호(id)"는 제외 칼럼으로 지정하시오.</li>
+                            <li>범주형 변수는 데이터 인코더를 sparse로 설정하시오.</li>
+                        </ul>
+                    </li>
+                    <li>Output 칼럼:
+                        <ul style="list-style-type: circle; padding-left: 20px; margin: 5px 0 0 0;">
+                            <li>종속변수를 Output 칼럼으로 지정하시오.</li>
+                        </ul>
+                    </li>
+                    <li>칼럼 Parameter 설정:
+                        <ul style="list-style-type: circle; padding-left: 20px; margin: 5px 0 0 0;">
+                            <li>데이터 유형은 모델 유형에 맞게 설정하시오.</li>
+                            <li>FC레이어수: 1, FC레이어크기: 20, 드롭아웃: 0, 활성함수: softmax, FC활성함수: relu</li>
+                        </ul>
+                    </li>
+                    <li>학습 Parameter 설정:
+                        <ul style="list-style-type: circle; padding-left: 20px; margin: 5px 0 0 0;">
+                            <li>Epochs: 10, 그 외 초기 설정값 사용</li>
+                        </ul>
+                    </li>
+                    <li>답안 작성:
+                        <ul style="list-style-type: circle; padding-left: 20px; margin: 5px 0 0 0;">
+                            <li>모델 학습 후 오른쪽 상단의 [모델 저장] 기능을 통해 모델을 저장하시오.</li>
+                            <li>정답 작성은 반올림하여 소수점 넷째 자리까지 작성하시오.</li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
                     <p><input type="text" placeholder=""><span class="point">💊힌트</span></p>
                     <p class="hint"><img src="images/12.png" alt=""></p>
                 </div>
@@ -436,7 +521,7 @@
                     </div>
                     
                     <p><input type="text" placeholder="값을 입력 하세요"><span class="point">💊힌트</span></p>
-                    <p class="hint"><img src="images/13.png" alt=""></p>
+                    <p class="hint"><img src="images/10.png" alt=""></p>
                 </div>
             </div>
         </section>
@@ -447,27 +532,13 @@
             <p class="section-desc">새로운 대량의 데이터셋을 모델에 입력하여 일괄적인 예측 결과 값을 도출합니다.</p>
             <div class="card-grid">
                 <div class="card"><h3>변수영향도 확인</h3>
-                    <h3>🧯문제</h3><p> PAPS 등급중 5등급을 결정하는데 가장 중요한 요소(변수)는 무엇인가요? </p>
+                    <h3>🧯문제</h3><p> 학습한 딥러닝 모델 분석 결과, "쌀종류(rice_type)"을 결정하는데 가장 중
+요한 요소를 작성하시오 </p>
                     <p><input type="text" placeholder=""><span class="point">💊힌트</span></p>
-                    <p class="hint"><img src="images/14.png" alt=""></p>
+                    <p class="hint"><img src="images/11.png" alt=""></p>
                 </div>
 
-                <div class="card"><h3>시뮬레이션</h3><p><img src="images/36.png" alt=""></p>
-                
-                    <h3>🧯문제</h3><p> 학습한 딥러닝 모델을 활용하여 예측해보자" </p>
-                    <div style="width: 100%; box-sizing: border-box; background-color:#E5E5E5; border: 1px solid #999999; padding: 12px 16px; margin: 10px 0; font-weight: bold; border-radius: 6px; overflow-wrap: break-word;">
-                        시뮬레이션 : 근력 근지구력 - 50 , 몸무게_IM - 80, 성별 - 남 , 순발력 - 40 , 심폐지구력 - 70, 유연성 - 70 , 키_IM 170
-                    </div>
-                    <p><input type="text" placeholder=""><span class="point">💊힌트</span></p>
-                    <p class="hint"><img src="images/15.png" alt=""></p>
-
-                    <h3>🧯문제</h3><p> 학습한 딥러닝 모델을 활용하여 PAPS등급을 예측해보자" </p>
-                    <div style="width: 100%; box-sizing: border-box; background-color:#E5E5E5; border: 1px solid #999999; padding: 12px 16px; margin: 10px 0; font-weight: bold; border-radius: 6px; overflow-wrap: break-word;">
-                        시뮬레이션 : 근력 근지구력 - 70 , 몸무게_IM - 60, 성별 - 여 , 순발력 - 55 , 심폐지구력 - 75, 유연성 - 65 , 키_IM -165
-                    </div>
-                    <p><input type="text" placeholder=""><span class="point">💊힌트</span></p>
-                    <p class="hint"><img src="images/16.png" alt=""></p>
-                </div>
+               
             </div>
         </section>
     </main>
