@@ -265,7 +265,7 @@
             </div>
 
             <div class="card-grid" style="margin-top: 20px;">
-                <div class="card"><h3 class="card_h3">어떤 데이터가 필요할까?</h3><p class="care_p">중학교 PAPS데이터.csv</p></div>
+                <div class="card"><h3 class="card_h3">어떤 데이터가 필요할까?</h3><p class="care_p">rice.csv</p></div>
                 <div class="card"><h3>PAPAS란?</h3><p>팝스는 학생들의 전반적인 신체 능력을 객관적으로 확인하기 위한 제도로, 심폐지구력, 근력과 근지구력, 유연성, 순발력, 비만정도 등을 종합적으로 측정해서 등급으로 판단</p></div>
             </div>
         </section>
@@ -576,8 +576,8 @@
 
         function downloadCsv() {
             const link = document.createElement('a');
-            link.href = '../data/중학교 PAPS데이터.csv';
-            link.download = '중학교 PAPS데이터.csv';
+            link.href = '../data/rice.csv';
+            link.download = 'rice.csv';
             document.body.appendChild(link);
             link.click();
             document.body.removeChild(link);
