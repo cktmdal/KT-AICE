@@ -125,7 +125,7 @@
             border-radius: 8px;
             padding: 24px;
             transition: transform 0.2s, box-shadow 0.2s;
-            width: 100%; /* 카드 너비가 영역에 꽉 차도록 수정 */
+            width: 100%;
         }
 
         .card:hover {
@@ -250,22 +250,11 @@
                 <p style="font-size: 0.9rem; color: #64748b; margin-bottom: 15px;">학습 자료 파일을 다운로드 받으세요</p>
                 
                 <div id="teacher-auth-box" style="margin-bottom: 15px;">
-                    <button class="btn-save" onclick="teacherLogin()" style="background-color: #475569; font-size: 0.85rem; padding: 6px 12px;">교사 모드 인증 (업로드 활성화)</button>
+                    <button onclick="teacherLogin()" style="background-color: #475569; color: #fff; border: none; font-size: 0.85rem; padding: 6px 12px; border-radius: 4px; cursor: pointer;">교사 모드 인증 (업로드 활성화)</button>
                 </div>
-                <button class="btn" onclick="downloadCsv()">데이터 다운로드</button>
-           
-                <script>
-                    function downloadCsv() {
-                        const link = document.createElement('a');
-                        link.href = '../data/중학교 PAPS데이터.csv';
-                        link.download = '중학교 PAPS데이터.csv';
-                        document.body.appendChild(link);
-                        link.click();
-                        document.body.removeChild(link);
-                    }
-                </script>
+                <button class="btn" onclick="downloadCsv()" style="background-color: #2563eb; color: white; padding: 6px 14px; font-size: 0.85rem; border: none; border-radius: 4px; cursor: pointer;">데이터 다운로드</button>
                 
-                <div id="upload-box" style="margin-bottom: 15px; display: none;">
+                <div id="upload-box" style="margin-bottom: 15px; display: none; margin-top: 10px;">
                     <input type="file" id="upload-file-input" style="font-size: 0.9rem; padding: 6px;" onchange="handleFileUpload(event)">
                     <button onclick="teacherLogout()" style="background: none; border: none; color: #ef4444; font-size: 0.85rem; cursor: pointer; margin-left: 10px;">잠금(로그아웃)</button>
                 </div>
@@ -355,6 +344,15 @@
             </div>
         </section>
 
+        <!-- 비지도학습분석 섹션 추가 (메뉴 링크 대응) -->
+        <section id="analysis-corr" class="content-section">
+            <h1>비지도학습분석</h1>
+            <p class="section-desc">군집화 및 차원 축소 등의 비지도 학습 기법을 활용하여 데이터의 구조를 파악합니다.</p>
+            <div class="card-grid">
+                <div class="card"><h3>비지도학습</h3><p>비지도 학습 관련 실습 및 문제 영역입니다.</p></div>
+            </div>
+        </section>
+
         <section id="analysis-vis" class="content-section">
             <h1>데이터 샘플보기</h1>
             <p class="section-desc">데이터를 확인 할 수 있습니다.</p>
@@ -378,6 +376,7 @@
         <!-- 4. AI 모델 학습 섹션들 -->
         <section id="train-select" class="content-section">
             <h1>머신러닝 학습</h1>
+            <p class="section-desc">머신러닝 알고리즘을 선택하고 학습을 진행합니다.</p>
         </section>
 
         <section id="train-hyper" class="content-section">
@@ -400,7 +399,6 @@
                 </div>
             </div>
 
-            <!-- [수정된 부분] 가이드 박스 너비 고정 해제 및 반응형 크기(width: 100%, box-sizing: border-box) 적용 -->
             <div class="card-grid" style="margin-top: 20px;">
                 <div class="card">
                     <h3>🧯문제</h3>
@@ -465,7 +463,7 @@
 
                     <h3>🧯문제</h3><p> 학습한 딥러닝 모델을 활용하여 PAPS등급을 예측해보자" </p>
                     <div style="width: 100%; box-sizing: border-box; background-color:#E5E5E5; border: 1px solid #999999; padding: 12px 16px; margin: 10px 0; font-weight: bold; border-radius: 6px; overflow-wrap: break-word;">
-                        v시뮬레이션 : 근력 근지구력 - 70 , 몸무게_IM - 60, 성별 - 여 , 순발력 - 55 , 심폐지구력 - 75, 유연성 - 65 , 키_IM -165
+                        시뮬레이션 : 근력 근지구력 - 70 , 몸무게_IM - 60, 성별 - 여 , 순발력 - 55 , 심폐지구력 - 75, 유연성 - 65 , 키_IM -165
                     </div>
                     <p><input type="text" placeholder=""><span class="point">💊힌트</span></p>
                     <p class="hint"><img src="images/16.png" alt=""></p>
@@ -476,7 +474,7 @@
 
     <!-- 자바스크립트 영역 -->
     <script>
-       function switchSection(targetId, event) {
+        function switchSection(targetId, event) {
             event.preventDefault();
 
             const sections = document.querySelectorAll('.content-section');
@@ -546,14 +544,6 @@
             reader.readAsDataURL(file);
         }
 
-        .loadSavedFile = function() {
-            const savedData = localStorage.getItem('saved_gpa_file');
-            if (savedData) {
-                const fileInfo = JSON.parse(savedData);
-                renderFileUI(fileInfo);
-            }
-        }
-
         function loadSavedFile() {
             const savedData = localStorage.getItem('saved_gpa_file');
             if (savedData) {
@@ -582,6 +572,15 @@
                 localStorage.removeItem('saved_gpa_file');
                 document.getElementById('file-download-container').innerHTML = '<span style="font-size: 0.85rem; color: #94a3b8;">등록된 파일이 없습니다.</span>';
             }
+        }
+
+        function downloadCsv() {
+            const link = document.createElement('a');
+            link.href = '../data/중학교 PAPS데이터.csv';
+            link.download = '중학교 PAPS데이터.csv';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
         }
     </script>
 </body>
