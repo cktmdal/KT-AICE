@@ -181,6 +181,57 @@
         ul > li > ul > li {
             margin-left: 20px !important;
         }
+        .container {
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            width: 320px;
+            text-align: center;
+        }
+        h2 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+        .input-group {
+            margin-bottom: 15px;
+            text-align: left;
+        }
+        label {
+            display: block;
+            font-size: 14px;
+            color: #555;
+            margin-bottom: 5px;
+        }
+        input {
+            width: 100%;
+            padding: 10px;
+            box-sizing: border-box;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-size: 16px;
+        }
+        button {
+            width: 100%;
+            padding: 12px;
+            background-color: #2563eb;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 10px;
+            transition: background-color 0.2s;
+        }
+        button:hover {
+            background-color: #1d4ed8;
+        }
+        #result {
+            margin-top: 20px;
+            font-size: 18px;
+            font-weight: bold;
+            color: #1e293b;
+        }
     </style>
 </head>
 <body>
@@ -265,9 +316,8 @@
             </div>
 
             <div class="card-grid" style="margin-top: 20px;">
-                <div class="card"><h3 class="card_h3">어떤 데이터가 필요할까?</h3><p class="care_p">rice.csv</p></div>
-                <div class="card"><h3>쌀 종류 예측?</h3><p>A정미소에서는 요리 종류에 따라 각기 다른 종류의 쌀 사용을 위해
-쌀 데이터를 이용하여 쌀 종류를 예측하고자 한다.</p></div>
+                <div class="card"><h3 class="card_h3">어떤 데이터가 필요할까?</h3><p class="care_p">bmi_data.csv</p></div>
+                <div class="card"><h3>BMI예측?</h3><p>비만과 과체중의 의미를 파악하고 비만 지수 예측의 중요성을 설명할 수 있으며 정확한 BMI예측을 위한 문제를 정의할수 있다</p></div>
             </div>
         </section>
 
@@ -275,8 +325,68 @@
             <h1>데이터 가져오기</h1>
             <p class="section-desc">분석 데이터 문제정의</p>
             <div class="card-grid">
-                <div class="card"><h3>문제정의</h3><p> 쌀 데이터를 활용해서, 쌀 종류를 예측하는 인공지능 모델을 만들어보자</p></div>
-                <div class="card"><h3> PAPS 등급측정은?</h3><p> 심폐지구력, 유연성, 근력과 근지구력, 순발력, 비만정도를 측정 =>1등급(아주높음), 2등급(높음),3등급(보통),4등급(낮음),5등급(매우낮음)</p></div>
+                <div class="card"><h3>문제정의</h3><p>정확한 BMI예측을 위한 문제를 정의할수 있다</p></div>
+                <div class="card">
+                    <div class="container">
+        <h2>BMI 계산기</h2>
+        <div class="input-group">
+            <label for="height">키 (cm)</label>
+            <input type="number" id="height" placeholder="예: 170">
+        </div>
+        <div class="input-group">
+            <label for="weight">체중 (kg)</label>
+            <input type="number" id="weight" placeholder="예: 65">
+        </div>
+        <button onclick="getBMI()">계산하기</button>
+
+        <div id="result"></div>
+    </div>
+
+    <script>
+        function getBMI() {
+            const heightCm = parseFloat(document.getElementById('height').value);
+            const weightKg = parseFloat(document.getElementById('weight').value);
+            const resultDiv = document.getElementById('result');
+
+            if (!heightCm || !weightKg || heightCm <= 0 || weightKg <= 0) {
+                resultDiv.style.color = "#ef4444";
+                resultDiv.innerText = "올바른 키와 체중을 입력해주세요.";
+                return;
+            }
+
+            // cm를 m로 변환하여 BMI 계산 (체중 / 키(m)^2)
+            const heightM = heightCm / 100;
+            const bmi = weightKg / (heightM * heightM);
+
+            // 대한비만학회 기준 판정
+            let grade = "";
+            let color = "#1e293b";
+            if (bmi < 18.5) {
+                grade = "저체중";
+                color = "#3b82f6";
+            } else if (bmi < 23.0) {
+                grade = "정상";
+                color = "#10b981";
+            } else if (bmi < 25.0) {
+                grade = "비만전단계(과체중)";
+                color = "#f59e0b";
+            } else if (bmi < 30.0) {
+                grade = "1단계 비만";
+                color = "#f97316";
+            } else if (bmi < 35.0) {
+                grade = "2단계 비만";
+                color = "#ef4444";
+            } else {
+                grade = "3단계 비만(고도비만)";
+                color = "#991b1b";
+            }
+
+            resultDiv.style.color = color;
+            resultDiv.innerHTML = `BMI: ${bmi.toFixed(2)}<br><span style="font-size: 15px;">판정: ${grade}</span>`;
+        }
+    </script>
+                    
+                </div>
                <div class="card">
                     <h3>데이터 컬럼명</h3>
                     <ul style="list-style-type: disc; padding-left: 20px; line-height: 1.6; margin: 0;">
@@ -302,25 +412,14 @@
             <h1>기초정보 분석</h1>
             <p class="section-desc">데이터의 평균, 중앙값, 최빈값, 표준편차 등 핵심 통계 지표를 한눈에 파악합니다.</p>
             <div class="card-grid">
-                <div class="card"><h3>🧯문제</h3><p>종속변수(output 컬럼)란 독립변수(input 컬럼)를 바탕으로 예측하는 대상을 의미한다.
-다음 중 이 과제를 해결하는 데 필요한 종속변수를 고르시 <span class="hide">4</span></p>
-                    <ol>
-                        <li><span>1</span>지름(diameter)</li>
-                        <li><span>2</span>쌀번호</li>
-                        <li><span>3</span>중복되는 관측치는 없다</li>
-                        <li><span>4</span>두께(thickness)</li>
-                        <li><span>5</span>쌀종류(rice_type</li>
-                    </ol>
+                <div class="card"><h3>🧯문제</h3><p>종속변수와 독립변수를 작성하세요</p>
+                    <p><input type="text" placeholder="종속변수:     , 독립변수:     "><span class="point">💊힌트</span></p>
+                  
                   
                 </div>
-                     <div class="card"><h3>🧯문제</h3><p>모델 학습시 예측에 영향을 미치치 않는 단순 식별자로 제외 칼럼으로 지정해야 하는 변수는? <span class="hide">4</span></p>
-                    <ol>
-                        <li><span>1</span>면적(area)</li>
-                        <li><span>2</span>고유번호(ID)</li>
-                        <li><span>3</span>원형율(roundness)</li>
-                        <li><span>4</span>이심률(eccentricity)</li>
-                 
-                    </ol>
+                     <div class="card"><h3>🧯문제</h3><p>중복행의 갯수는? 
+                    <p><input type="text" placeholder="값을 입력 하세요"><span class="point">💊힌트</span></p>
+                   <p class="hint"><img src="images/1.png" alt=""></p>
                   
                 </div>
                 <div class="card"><h3>🧯문제</h3><p>데이터의 전체 개수(observation)를 작성하시오. </p>
@@ -328,17 +427,17 @@
                    <p class="hint"><img src="images/1.png" alt=""></p>
                 </div>
 
-                <div class="card"><h3>🧯문제</h3><p>'장축길이(vertical_length)의 평균(mean)를 작성하시오. </p>
-                   <p><input type="text" placeholder="값을 입력 하세요"><span class="point">💊힌트</span></p>
+                <div class="card"><h3>🧯문제</h3><p>수치형 컬럼과 문자형 컬럼 수를 작성하시오. </p>
+                   <p><input type="text" placeholder="수치형 컬럼:   ,문자형 컬럼:    "><span class="point">💊힌트</span></p>
                    <p class="hint"><img src="images/2.png" alt=""></p>
                 </div>
 
-                <div class="card"><h3>🧯문제</h3><p>전체 결측치 개수를 작성하시오. </p>
+                <div class="card"><h3>🧯문제</h3><p>몸무게 칼럼에서 최소값은? </p>
                    <p><input type="text" placeholder="값을 입력 하세요"><span class="point">💊힌트</span></p>
                    <p class="hint"><img src="images/6.png" alt=""></p>
                 </div>
 
-                <div class="card"><h3>🧯문제</h3><p>면적(area)의 평균(mean)을 소수점 둘째 자리까지 작성하시오. </p>
+                <div class="card"><h3>🧯문제</h3><p>키 칼럼의 결측값은 ? </p>
                    <p><input type="text" placeholder="값을 입력 하세요"><span class="point">💊힌트</span></p>
                    <p class="hint"><img src="images/7.png" alt=""></p>
                 </div>
@@ -349,42 +448,26 @@
             <h1>시각화분석</h1>
             <p class="section-desc">데이터 내 누락된 값(NaN)의 분포와 정상 범위를 벗어난 아웃라이어를 찾아냅니다.</p>
             <div class="card-grid">
-                <div class="card"><h3>🧯문제</h3><p> '이심률(eccentricity)과 가장 큰 음의 상관관계(correlation)를 가지는 변수를 고르시오. 
-                    [히드맵]  </p>
-                   <ul style="list-style-type: disc; padding-left: 20px; line-height: 1.6; margin: 0;">
-                        <li><strong>horizontal_length</strong> : 보조축길이</li>
-                        <li><strong>vertical_length</strong> : 장축길이</li>
-                        <li><strong>area</strong> : 면적</li>
-                        <li><strong>perimeter</strong> : 둘레</li>
-                    </ul>
-                    <p><input type="text" placeholder="변수명"><span class="point">💊힌트</span></p>
+                <div class="card"><h3>🧯문제</h3><p> 산점도에서 몸무게와BMI 로 컬럼을 선택하고 분석 결과에 대해 설명하세요
+                    [산점도]  </p>
+                   
+                    <p><input type="text" placeholder=""><span class="point">💊힌트</span></p>
                    <p class="hint"><img src="images/3.png" alt=""></p>
                 </div>
 
-                 <div class="card"><h3>🧯문제</h3><p>  가장높은 양의 상관관계(correlation)를 보이는 두 변수의 조합을 고르시오. 
-                    [히드맵]  </p>
-                   <ul style="list-style-type: disc; padding-left: 20px; line-height: 1.6; margin: 0;">
-                        <li><strong>면적(area)</strong> : 블록면적</li>
-                        <li><strong>장축길이(vertical_length)</strong> : 보조축길이(horizontal_length)</li>
-                        <li><strong>면적(area)</strong> : 이심률</li>
-                        <li><strong>고유번호(id)</strong> : 둘레(perimeter)</li>
-                    </ul>
-                    <p><input type="text" placeholder="변수명"><span class="point">💊힌트</span></p>
+                 <div class="card"><h3>🧯문제</h3><p>  남자, 여자 의 체질량분석에서 중앙값을 작성하세요
+                    [박스차트]  </p>
+                  
+                    <p><input type="text" placeholder="남자 중앙값:         , 여자 중앙값:         "><span class="point">💊힌트</span></p>
                    <p class="hint"><img src="images/8.png" alt=""></p>
                 </div>
 
                 
-                <div class="card"><h3>🧯문제</h3><p>eccentricity(이심률)에서 한국쌀중 이심률이 0.94인 데이터의 갯수는? [분포차트] </p>
+                <div class="card"><h3>🧯문제</h3><p> BMI와 각칼럼간의 상관관계가 높은 순서대로 작성하세요 [히드맵] </p>
                    <p><input type="text" placeholder=""><span class="point">💊힌트</span></p>
                    <p class="hint"><img src="images/4.png" alt=""></p>
                 </div>
 
-                <div class="card"><h3>🧯문제</h3><p>Y칼럼 eccentricity, X칼럼 rice_type 로 하고 한국쌀의 min값을 작성하시오? [박스차트] </p>
-                   <p><input type="text" placeholder=""><span class="point">💊힌트</span></p>
-                   <p class="hint"><img src="images/5.png" alt=""></p>
-                </div>
-
-              wlrma
             </div>
         </section>
 
@@ -411,15 +494,9 @@
             <p class="section-desc">결측치와 중복 데이터를 처리하고 정돈된 형태로 정제합니다.</p>
             <div class="card-grid">
                 <div class="card"><h3>🧯문제</h3>
-                   <p>모든 변수의 결측치(missing cells)를 다음 가이드에 따라 처리한 후, "면적(area)"의 결
-측치(missing cells)를 대체하는 값을 작성하시오</p>
-                   <ul style="list-style-type: disc; padding-left: 20px; line-height: 1.6; margin: 10px 0;">
-                    <li>종속변수를 제외한 모든 변수의 결측치(missing cells)를 처리하시오.</li>
-                    <li>수치형 데이터로 구성된 변수는 중앙값(median)로 대체하시오.</li>
-                    <li>범주형 데이터로 구성된 변수는 최빈값(most_frequent)으로 대체하시오.</li>
-                    <li>수행 후 기존 변수는 삭제하고 [가공 데이터 저장]을 클릭하여 가공된 데이터를 저장하시오.</li>
-               </ul>
-                      <p><input type="text" placeholder=""><span class="point">💊힌트</span></p>
+                   <p>키의  결측치(missing cells)의 대체값은 최빈값, 중앙값, 평균값, 상수 중 무엇으로(1) 해야하며 , 해당 값으로 대체 했을경우 대체값은(2) ?</p>
+          
+                      <p><input type="text" placeholder="   (1)   ,  (2)     "><span class="point">💊힌트</span></p>
                    <p class="hint"><img src="images/9.png" alt=""></p>
                 </div>
             </div>
@@ -439,47 +516,9 @@
                 <div class="card">
                     <h3>딥러닝 학습</h3>
                    
-                    <h3>🧯문제</h3><p>다음 가이드에 따라 딥러닝 모델을 학습하고, 해당 모델의 정확도(Accuracy)를 작성하
-시오.</p>
-                    <div style="width: 100%; box-sizing: border-box; background-color: #E5E5E5; border: 1px solid #999999; padding: 16px; margin: 15px 0; font-weight: bold; border-radius: 6px; overflow-wrap: break-word;">
-                <ul style="padding-left: 20px; line-height: 1.6; margin: 0;">
-                    <li>[AI모델 학습] 메뉴를 활용하시오.</li>
-                    <li>작업 데이터 선택:
-                        <ul style="list-style-type: circle; padding-left: 20px; margin: 5px 0 0 0;">
-                            <li>문항 5에서 처리한 데이터를 사용하시오.</li>
-                        </ul>
-                    </li>
-                    <li>Input 칼럼:
-                        <ul style="list-style-type: circle; padding-left: 20px; margin: 5px 0 0 0;">
-                            <li>"고유번호(id)"는 제외 칼럼으로 지정하시오.</li>
-                            <li>범주형 변수는 데이터 인코더를 sparse로 설정하시오.</li>
-                        </ul>
-                    </li>
-                    <li>Output 칼럼:
-                        <ul style="list-style-type: circle; padding-left: 20px; margin: 5px 0 0 0;">
-                            <li>종속변수를 Output 칼럼으로 지정하시오.</li>
-                        </ul>
-                    </li>
-                    <li>칼럼 Parameter 설정:
-                        <ul style="list-style-type: circle; padding-left: 20px; margin: 5px 0 0 0;">
-                            <li>데이터 유형은 모델 유형에 맞게 설정하시오.</li>
-                            <li>FC레이어수: 1, FC레이어크기: 20, 드롭아웃: 0, 활성함수: softmax, FC활성함수: relu</li>
-                        </ul>
-                    </li>
-                    <li>학습 Parameter 설정:
-                        <ul style="list-style-type: circle; padding-left: 20px; margin: 5px 0 0 0;">
-                            <li>Epochs: 10, 그 외 초기 설정값 사용</li>
-                        </ul>
-                    </li>
-                    <li>답안 작성:
-                        <ul style="list-style-type: circle; padding-left: 20px; margin: 5px 0 0 0;">
-                            <li>모델 학습 후 오른쪽 상단의 [모델 저장] 기능을 통해 모델을 저장하시오.</li>
-                            <li>정답 작성은 반올림하여 소수점 넷째 자리까지 작성하시오.</li>
-                        </ul>
-                    </li>
-                </ul>
-            </div>
-                    <p><input type="text" placeholder=""><span class="point">💊힌트</span></p>
+                    <h3>🧯문제</h3><p>딥러닝 학습에서 Output칼럼과, 제외칼럼 , input 칼럼을 작성 하세요</p>
+                   
+                    <p><input type="text" placeholder=" Output칼럼:     ,제외칼럼:,     input 칼럼: "><span class="point">💊힌트</span></p>
                     <p class="hint"><img src="images/12.png" alt=""></p>
                 </div>
             </div>
@@ -487,40 +526,11 @@
             <div class="card-grid" style="margin-top: 20px;">
                 <div class="card">
                     <h3>🧯문제</h3>
-                    <p>아래 가이드에 따라 딥러닝을 학습하고 정확도를 작성하시오</p>
+                    <p>Ouptut 컬럼은 데이터 유형과, 디코더 선택, 활성화 함수를 어떻게 설정 해야 하는지 작성 하시오</p>
                     
-                    <div style="width: 100%; box-sizing: border-box; background-color: #E5E5E5; border: 1px solid #999999; padding: 16px; margin: 15px 0; font-weight: bold; border-radius: 6px; overflow-wrap: break-word;">
-                         <ul style="padding-left: 20px;">
-                             <li>작업 데이터 선택: 가공된 데이터를 사용하세요</li>
-                             <li> Input 칼럼
-                                 <ul>
-                                         <li>연도, 시도, 학교급, 학년_IM, BMI는 제외 컬럼으로 지정</li>
-                                         <li>범주형 변수는 데이터 인코더를, sparse로 설정</li>
-                                 </ul>
-                             </li>
-                             <li>
-                                 Output 칼럼 : 종속변수를 Output로 설정
-                             </li>
-                             <li> 칼럼 parameter설정
-                                 <ul>
-                                         <li>데이터 유형은 모델 유형에 맞게 설정하시오</li>
-                                         <li>FC레이어수:2. FC레이어크기:100, 드롭아웃0, 활성화함수 relu</li>
-                                 </ul>
-                             </li>
-                             <li>
-                                 학습 Parameter 설정 : Epochs:2, Batch size:128, Early Stop:5, Optimizer: adam, Learning Rate:0.001, 교차검증 fold수 :1
-                             </li>
-                             <li>
-                                 답안작성
-                                 <ul>
-                                         <li>모델 학습후 오른쪽 상단의[모델저장 ]기능을 통해 모델을 저장하시오</li>
-                                         <li>정답 작성은 반올림하여 소숫점 넷째 자리까지 작성하시오</li>
-                                 </ul>
-                             </li>
-                         </ul>
-                    </div>
+                   
                     
-                    <p><input type="text" placeholder="값을 입력 하세요"><span class="point">💊힌트</span></p>
+                    <p><input type="text" placeholder=" 데이터 유형과, 디코더 선택, 활성화 함수"><span class="point">💊힌트</span></p>
                     <p class="hint"><img src="images/10.png" alt=""></p>
                 </div>
             </div>
@@ -647,8 +657,8 @@
 
         function downloadCsv() {
             const link = document.createElement('a');
-            link.href = '../data/rice.csv';
-            link.download = 'rice.csv';
+            link.href = '../data/bmi_data.csv';
+            link.download = 'bmi_data.csv';
             document.body.appendChild(link);
             link.click();
             document.body.removeChild(link);
