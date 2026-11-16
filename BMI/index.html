@@ -1,1 +1,659 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI 학습 플랫폼 대시보드</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif;
+            background-color: #f4f6f9;
+            color: #333;
+            display: flex;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        /* 왼쪽 메뉴 영역 */
+        aside {
+            width: 280px;
+            background-color: #1e293b;
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            border-right: 1px solid #cbd5e1;
+            overflow-y: auto;
+        }
+
+        .logo-area {
+            padding: 24px 20px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            background-color: #0f172a;
+            border-bottom: 1px solid #334155;
+            letter-spacing: -0.5px;
+        }
+
+        .menu-container {
+            padding: 20px 0;
+        }
+
+        .menu-category {
+            margin-bottom: 20px;
+        }
+
+        .menu-title {
+            padding: 10px 20px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: #94a3b8;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .submenu-list {
+            list-style: none;
+        }
+
+        .submenu-item a {
+            display: block;
+            padding: 10px 20px 10px 32px;
+            color: #cbd5e1;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: all 0.2s ease;
+            border-left: 3px solid transparent;
+        }
+
+        .submenu-item a:hover,
+        .submenu-item a.active {
+            color: #ffffff;
+            background-color: #334155;
+            border-left-color: #3b82f6;
+        }
+
+        /* 오른쪽 컨텐츠 SECTION 영역 */
+        main {
+            flex: 1;
+            background-color: #ffffff;
+            padding: 40px;
+            overflow-y: auto;
+        }
+
+        .content-section {
+            display: none;
+            max-width: 900px;
+        }
+
+        .content-section.active {
+            display: block;
+            animation: fadeIn 0.3s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(6px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        h1 {
+            font-size: 1.8rem;
+            color: #0f172a;
+            margin-bottom: 12px;
+        }
+
+        .section-desc {
+            font-size: 1rem;
+            color: #64748b;
+            margin-bottom: 30px;
+            line-height: 1.5;
+        }
+
+        .card-grid {
+            display: grid;
+            gap: 20px;
+        }
+
+        .card {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 24px;
+            transition: transform 0.2s, box-shadow 0.2s;
+            width: 100%;
+        }
+
+        .card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            border-color: orangered;
+        }
+
+        .card h3 {
+            font-size: 1.5rem;
+            color: #1e293b;
+            margin-bottom: 8px;
+        }
+
+        .card p {
+            font-size: 1.2rem;
+            color: #272e38;
+            line-height: 1.4;
+            padding-left: 20px;
+        }
+
+        ol { padding-left: 70px; list-style-type: none; }
+        ol li { line-height: 30px; }
+        ol li span {
+            border: 1px solid #262626;
+            border-radius: 100%;
+            width: 22px;
+            height: 22px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 5px;
+            font-size: 14px;
+        }
+
+        .card .hide { background-color: #0f172a; color: #000; }
+        .card .hide:hover { color: #fff; }
+        
+        input {
+            border: 1px solid #d9d9d9;
+            height: 50px;
+            width: 350px;
+            display: inline-block;
+            margin-top: 10px;
+            padding-left: 10px;
+        }
+    
+        .hint { display: none; margin-top: 10px; }
+        .point { cursor: pointer; color: #3b82f6; margin-left: 10px; font-weight: bold; }
+        
+        textarea { width: 80%; height: 100px; overflow: auto; }
+        
+        ul > li > ul > li {
+            margin-left: 20px !important;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 왼쪽 메뉴 영역 -->
+    <aside>
+        <div class="logo-area">BMI 예측</div>
+        <div class="menu-container">
+            
+            <!-- 1. 데이터 가져오기 -->
+            <div class="menu-category">
+                <div class="menu-title">1. 데이터 가져오기</div>
+                <ul class="submenu-list">
+                    <li class="submenu-item"><a href="#import-file" class="active" onclick="switchSection('import-file', event)">문제정의</a></li>
+                    <li class="submenu-item"><a href="#import-db" onclick="switchSection('import-db', event)">테이터가져오기</a></li>
+                </ul>
+            </div>
+
+            <!-- 2. 데이터 분석 -->
+            <div class="menu-category">
+                <div class="menu-title">2. 데이터 분석</div>
+                <ul class="submenu-list">
+                    <li class="submenu-item"><a href="#analysis-summary" onclick="switchSection('analysis-summary', event)">기초정보분석</a></li>
+                    <li class="submenu-item"><a href="#analysis-missing" onclick="switchSection('analysis-missing', event)">시각화분석</a></li>
+                    <li class="submenu-item"><a href="#analysis-corr" onclick="switchSection('analysis-corr', event)">비지도학습분석</a></li>
+                    <li class="submenu-item"><a href="#analysis-vis" onclick="switchSection('analysis-vis', event)">데이터샘플보기</a></li>
+                </ul>
+            </div>
+
+            <!-- 3. 데이터 가공 -->
+            <div class="menu-category">
+                <div class="menu-title">3. 데이터 가공</div>
+                <ul class="submenu-list">
+                    <li class="submenu-item"><a href="#process-clean" onclick="switchSection('process-clean', event)">데이터가공</a></li>
+                </ul>
+            </div>
+
+            <!-- 4. AI 모델 학습 -->
+            <div class="menu-category">
+                <div class="menu-title">4. AI 모델 학습</div>
+                <ul class="submenu-list">
+                    <li class="submenu-item"><a href="#train-select" onclick="switchSection('train-select', event)">머신러닝학습</a></li>
+                    <li class="submenu-item"><a href="#train-hyper" onclick="switchSection('train-hyper', event)">딥러닝학습</a></li>  
+                </ul>
+            </div>
+
+            <!-- 5. AI 모델 활용 -->
+            <div class="menu-category">
+                <div class="menu-title">5. AI 모델 활용</div>
+                <ul class="submenu-list">
+                    <li class="submenu-item"><a href="#use-predict" onclick="switchSection('use-predict', event)">AI 모델 활용</a></li>
+                </ul>
+            </div>
+
+        </div>
+    </aside>
+
+    <!-- 오른쪽 SECTION 영역 -->
+    <main>
+        <!-- 1. 데이터 가져오기 섹션들 -->
+        <section id="import-file" class="content-section active">
+            <h1>파일 업로드 (CSV/Excel)</h1>
+            <p class="section-desc">로컬 저장소에 있는 CSV, Excel, JSON 등의 정형 데이터 파일을 업로드.</p>
+            
+            <div style="margin-top: 30px; padding: 20px; background-color: #f8fafc; border: 1px dashed #cbd5e1; border-radius: 8px;">
+                <h5 style="margin-bottom: 10px; color: #1e293b;">📎 학습 자료 및 실습 파일 관리</h5>
+                <p style="font-size: 0.9rem; color: #64748b; margin-bottom: 15px;">학습 자료 파일을 다운로드 받으세요</p>
+                
+                <div id="teacher-auth-box" style="margin-bottom: 15px;">
+                    <button onclick="teacherLogin()" style="background-color: #475569; color: #fff; border: none; font-size: 0.85rem; padding: 6px 12px; border-radius: 4px; cursor: pointer;">교사 모드 인증 (업로드 활성화)</button>
+                </div>
+                <button class="btn" onclick="downloadCsv()" style="background-color: #2563eb; color: white; padding: 6px 14px; font-size: 0.85rem; border: none; border-radius: 4px; cursor: pointer;">데이터 다운로드</button>
+                
+                <div id="upload-box" style="margin-bottom: 15px; display: none; margin-top: 10px;">
+                    <input type="file" id="upload-file-input" style="font-size: 0.9rem; padding: 6px;" onchange="handleFileUpload(event)">
+                    <button onclick="teacherLogout()" style="background: none; border: none; color: #ef4444; font-size: 0.85rem; cursor: pointer; margin-left: 10px;">잠금(로그아웃)</button>
+                </div>
+
+                <div id="file-download-container" style="margin-top: 10px;">
+                    <span style="font-size: 0.85rem; color: #94a3b8;">등록된 파일이 없습니다.</span>
+                </div>
+            </div>
+
+            <div class="card-grid" style="margin-top: 20px;">
+                <div class="card"><h3 class="card_h3">어떤 데이터가 필요할까?</h3><p class="care_p">rice.csv</p></div>
+                <div class="card"><h3>쌀 종류 예측?</h3><p>A정미소에서는 요리 종류에 따라 각기 다른 종류의 쌀 사용을 위해
+쌀 데이터를 이용하여 쌀 종류를 예측하고자 한다.</p></div>
+            </div>
+        </section>
+
+        <section id="import-db" class="content-section">
+            <h1>데이터 가져오기</h1>
+            <p class="section-desc">분석 데이터 문제정의</p>
+            <div class="card-grid">
+                <div class="card"><h3>문제정의</h3><p> 쌀 데이터를 활용해서, 쌀 종류를 예측하는 인공지능 모델을 만들어보자</p></div>
+                <div class="card"><h3> PAPS 등급측정은?</h3><p> 심폐지구력, 유연성, 근력과 근지구력, 순발력, 비만정도를 측정 =>1등급(아주높음), 2등급(높음),3등급(보통),4등급(낮음),5등급(매우낮음)</p></div>
+               <div class="card">
+                    <h3>데이터 컬럼명</h3>
+                    <ul style="list-style-type: disc; padding-left: 20px; line-height: 1.6; margin: 0;">
+                        <li><strong>id</strong> : 고유번호</li>
+                        <li><strong>area</strong> : 면적</li>
+                        <li><strong>vertical_length</strong> : 장축길이</li>
+                        <li><strong>horizontal_length</strong> : 보조축길이</li>
+                        <li><strong>eccentricity</strong> : 이심률</li>
+                        <li><strong>convex_area</strong> : 볼록면적</li>
+                        <li><strong>diameter</strong> : 지름</li>
+                        <li><strong>perimeter</strong> : 둘레</li>
+                        <li><strong>roundness</strong> : 원형율</li>
+                        <li><strong>thickness</strong> : 두께</li>
+                        <li><strong>rice_type</strong> : 쌀종류</li>
+                    </ul>
+        </div>
+               
+            </div>
+        </section>
+
+        <!-- 2. 데이터 분석 섹션들 -->
+        <section id="analysis-summary" class="content-section">
+            <h1>기초정보 분석</h1>
+            <p class="section-desc">데이터의 평균, 중앙값, 최빈값, 표준편차 등 핵심 통계 지표를 한눈에 파악합니다.</p>
+            <div class="card-grid">
+                <div class="card"><h3>🧯문제</h3><p>종속변수(output 컬럼)란 독립변수(input 컬럼)를 바탕으로 예측하는 대상을 의미한다.
+다음 중 이 과제를 해결하는 데 필요한 종속변수를 고르시 <span class="hide">4</span></p>
+                    <ol>
+                        <li><span>1</span>지름(diameter)</li>
+                        <li><span>2</span>쌀번호</li>
+                        <li><span>3</span>중복되는 관측치는 없다</li>
+                        <li><span>4</span>두께(thickness)</li>
+                        <li><span>5</span>쌀종류(rice_type</li>
+                    </ol>
+                  
+                </div>
+                     <div class="card"><h3>🧯문제</h3><p>모델 학습시 예측에 영향을 미치치 않는 단순 식별자로 제외 칼럼으로 지정해야 하는 변수는? <span class="hide">4</span></p>
+                    <ol>
+                        <li><span>1</span>면적(area)</li>
+                        <li><span>2</span>고유번호(ID)</li>
+                        <li><span>3</span>원형율(roundness)</li>
+                        <li><span>4</span>이심률(eccentricity)</li>
+                 
+                    </ol>
+                  
+                </div>
+                <div class="card"><h3>🧯문제</h3><p>데이터의 전체 개수(observation)를 작성하시오. </p>
+                   <p><input type="text" placeholder="값을 입력 하세요"><span class="point">💊힌트</span></p>
+                   <p class="hint"><img src="images/1.png" alt=""></p>
+                </div>
+
+                <div class="card"><h3>🧯문제</h3><p>'장축길이(vertical_length)의 평균(mean)를 작성하시오. </p>
+                   <p><input type="text" placeholder="값을 입력 하세요"><span class="point">💊힌트</span></p>
+                   <p class="hint"><img src="images/2.png" alt=""></p>
+                </div>
+
+                <div class="card"><h3>🧯문제</h3><p>전체 결측치 개수를 작성하시오. </p>
+                   <p><input type="text" placeholder="값을 입력 하세요"><span class="point">💊힌트</span></p>
+                   <p class="hint"><img src="images/6.png" alt=""></p>
+                </div>
+
+                <div class="card"><h3>🧯문제</h3><p>면적(area)의 평균(mean)을 소수점 둘째 자리까지 작성하시오. </p>
+                   <p><input type="text" placeholder="값을 입력 하세요"><span class="point">💊힌트</span></p>
+                   <p class="hint"><img src="images/7.png" alt=""></p>
+                </div>
+            </div>
+        </section>
+
+        <section id="analysis-missing" class="content-section">
+            <h1>시각화분석</h1>
+            <p class="section-desc">데이터 내 누락된 값(NaN)의 분포와 정상 범위를 벗어난 아웃라이어를 찾아냅니다.</p>
+            <div class="card-grid">
+                <div class="card"><h3>🧯문제</h3><p> '이심률(eccentricity)과 가장 큰 음의 상관관계(correlation)를 가지는 변수를 고르시오. 
+                    [히드맵]  </p>
+                   <ul style="list-style-type: disc; padding-left: 20px; line-height: 1.6; margin: 0;">
+                        <li><strong>horizontal_length</strong> : 보조축길이</li>
+                        <li><strong>vertical_length</strong> : 장축길이</li>
+                        <li><strong>area</strong> : 면적</li>
+                        <li><strong>perimeter</strong> : 둘레</li>
+                    </ul>
+                    <p><input type="text" placeholder="변수명"><span class="point">💊힌트</span></p>
+                   <p class="hint"><img src="images/3.png" alt=""></p>
+                </div>
+
+                 <div class="card"><h3>🧯문제</h3><p>  가장높은 양의 상관관계(correlation)를 보이는 두 변수의 조합을 고르시오. 
+                    [히드맵]  </p>
+                   <ul style="list-style-type: disc; padding-left: 20px; line-height: 1.6; margin: 0;">
+                        <li><strong>면적(area)</strong> : 블록면적</li>
+                        <li><strong>장축길이(vertical_length)</strong> : 보조축길이(horizontal_length)</li>
+                        <li><strong>면적(area)</strong> : 이심률</li>
+                        <li><strong>고유번호(id)</strong> : 둘레(perimeter)</li>
+                    </ul>
+                    <p><input type="text" placeholder="변수명"><span class="point">💊힌트</span></p>
+                   <p class="hint"><img src="images/8.png" alt=""></p>
+                </div>
+
+                
+                <div class="card"><h3>🧯문제</h3><p>eccentricity(이심률)에서 한국쌀중 이심률이 0.94인 데이터의 갯수는? [분포차트] </p>
+                   <p><input type="text" placeholder=""><span class="point">💊힌트</span></p>
+                   <p class="hint"><img src="images/4.png" alt=""></p>
+                </div>
+
+                <div class="card"><h3>🧯문제</h3><p>Y칼럼 eccentricity, X칼럼 rice_type 로 하고 한국쌀의 min값을 작성하시오? [박스차트] </p>
+                   <p><input type="text" placeholder=""><span class="point">💊힌트</span></p>
+                   <p class="hint"><img src="images/5.png" alt=""></p>
+                </div>
+
+              wlrma
+            </div>
+        </section>
+
+        <!-- 비지도학습분석 섹션 추가 (메뉴 링크 대응) -->
+        <section id="analysis-corr" class="content-section">
+            <h1>비지도학습분석</h1>
+            <p class="section-desc">군집화 및 차원 축소 등의 비지도 학습 기법을 활용하여 데이터의 구조를 파악합니다.</p>
+            <div class="card-grid">
+                <div class="card"><h3>비지도학습</h3><p>비지도 학습 관련 실습 및 문제 영역입니다.</p></div>
+            </div>
+        </section>
+
+        <section id="analysis-vis" class="content-section">
+            <h1>데이터 샘플보기</h1>
+            <p class="section-desc">데이터를 확인 할 수 있습니다.</p>
+            <div class="card-grid">
+                <div class="card"><h3>데이터샘플</h3></div>
+            </div>
+        </section>
+
+        <!-- 3. 데이터 가공 섹션들 -->
+        <section id="process-clean" class="content-section">
+            <h1>데이터 가공</h1>
+            <p class="section-desc">결측치와 중복 데이터를 처리하고 정돈된 형태로 정제합니다.</p>
+            <div class="card-grid">
+                <div class="card"><h3>🧯문제</h3>
+                   <p>모든 변수의 결측치(missing cells)를 다음 가이드에 따라 처리한 후, "면적(area)"의 결
+측치(missing cells)를 대체하는 값을 작성하시오</p>
+                   <ul style="list-style-type: disc; padding-left: 20px; line-height: 1.6; margin: 10px 0;">
+                    <li>종속변수를 제외한 모든 변수의 결측치(missing cells)를 처리하시오.</li>
+                    <li>수치형 데이터로 구성된 변수는 중앙값(median)로 대체하시오.</li>
+                    <li>범주형 데이터로 구성된 변수는 최빈값(most_frequent)으로 대체하시오.</li>
+                    <li>수행 후 기존 변수는 삭제하고 [가공 데이터 저장]을 클릭하여 가공된 데이터를 저장하시오.</li>
+               </ul>
+                      <p><input type="text" placeholder=""><span class="point">💊힌트</span></p>
+                   <p class="hint"><img src="images/9.png" alt=""></p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. AI 모델 학습 섹션들 -->
+        <section id="train-select" class="content-section">
+            <h1>머신러닝 학습</h1>
+            <p class="section-desc">머신러닝 알고리즘을 선택하고 학습을 진행합니다.</p>
+        </section>
+
+        <section id="train-hyper" class="content-section">
+            <h1>딥러닝 학습</h1>
+            <p class="section-desc">모델의 학습 성능에 영향을 주는 세부 파라미터 값(학습률, 트리 깊이 등)을 지정합니다.</p>
+            
+            <div class="card-grid">
+                <div class="card">
+                    <h3>딥러닝 학습</h3>
+                   
+                    <h3>🧯문제</h3><p>다음 가이드에 따라 딥러닝 모델을 학습하고, 해당 모델의 정확도(Accuracy)를 작성하
+시오.</p>
+                    <div style="width: 100%; box-sizing: border-box; background-color: #E5E5E5; border: 1px solid #999999; padding: 16px; margin: 15px 0; font-weight: bold; border-radius: 6px; overflow-wrap: break-word;">
+                <ul style="padding-left: 20px; line-height: 1.6; margin: 0;">
+                    <li>[AI모델 학습] 메뉴를 활용하시오.</li>
+                    <li>작업 데이터 선택:
+                        <ul style="list-style-type: circle; padding-left: 20px; margin: 5px 0 0 0;">
+                            <li>문항 5에서 처리한 데이터를 사용하시오.</li>
+                        </ul>
+                    </li>
+                    <li>Input 칼럼:
+                        <ul style="list-style-type: circle; padding-left: 20px; margin: 5px 0 0 0;">
+                            <li>"고유번호(id)"는 제외 칼럼으로 지정하시오.</li>
+                            <li>범주형 변수는 데이터 인코더를 sparse로 설정하시오.</li>
+                        </ul>
+                    </li>
+                    <li>Output 칼럼:
+                        <ul style="list-style-type: circle; padding-left: 20px; margin: 5px 0 0 0;">
+                            <li>종속변수를 Output 칼럼으로 지정하시오.</li>
+                        </ul>
+                    </li>
+                    <li>칼럼 Parameter 설정:
+                        <ul style="list-style-type: circle; padding-left: 20px; margin: 5px 0 0 0;">
+                            <li>데이터 유형은 모델 유형에 맞게 설정하시오.</li>
+                            <li>FC레이어수: 1, FC레이어크기: 20, 드롭아웃: 0, 활성함수: softmax, FC활성함수: relu</li>
+                        </ul>
+                    </li>
+                    <li>학습 Parameter 설정:
+                        <ul style="list-style-type: circle; padding-left: 20px; margin: 5px 0 0 0;">
+                            <li>Epochs: 10, 그 외 초기 설정값 사용</li>
+                        </ul>
+                    </li>
+                    <li>답안 작성:
+                        <ul style="list-style-type: circle; padding-left: 20px; margin: 5px 0 0 0;">
+                            <li>모델 학습 후 오른쪽 상단의 [모델 저장] 기능을 통해 모델을 저장하시오.</li>
+                            <li>정답 작성은 반올림하여 소수점 넷째 자리까지 작성하시오.</li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+                    <p><input type="text" placeholder=""><span class="point">💊힌트</span></p>
+                    <p class="hint"><img src="images/12.png" alt=""></p>
+                </div>
+            </div>
+
+            <div class="card-grid" style="margin-top: 20px;">
+                <div class="card">
+                    <h3>🧯문제</h3>
+                    <p>아래 가이드에 따라 딥러닝을 학습하고 정확도를 작성하시오</p>
+                    
+                    <div style="width: 100%; box-sizing: border-box; background-color: #E5E5E5; border: 1px solid #999999; padding: 16px; margin: 15px 0; font-weight: bold; border-radius: 6px; overflow-wrap: break-word;">
+                         <ul style="padding-left: 20px;">
+                             <li>작업 데이터 선택: 가공된 데이터를 사용하세요</li>
+                             <li> Input 칼럼
+                                 <ul>
+                                         <li>연도, 시도, 학교급, 학년_IM, BMI는 제외 컬럼으로 지정</li>
+                                         <li>범주형 변수는 데이터 인코더를, sparse로 설정</li>
+                                 </ul>
+                             </li>
+                             <li>
+                                 Output 칼럼 : 종속변수를 Output로 설정
+                             </li>
+                             <li> 칼럼 parameter설정
+                                 <ul>
+                                         <li>데이터 유형은 모델 유형에 맞게 설정하시오</li>
+                                         <li>FC레이어수:2. FC레이어크기:100, 드롭아웃0, 활성화함수 relu</li>
+                                 </ul>
+                             </li>
+                             <li>
+                                 학습 Parameter 설정 : Epochs:2, Batch size:128, Early Stop:5, Optimizer: adam, Learning Rate:0.001, 교차검증 fold수 :1
+                             </li>
+                             <li>
+                                 답안작성
+                                 <ul>
+                                         <li>모델 학습후 오른쪽 상단의[모델저장 ]기능을 통해 모델을 저장하시오</li>
+                                         <li>정답 작성은 반올림하여 소숫점 넷째 자리까지 작성하시오</li>
+                                 </ul>
+                             </li>
+                         </ul>
+                    </div>
+                    
+                    <p><input type="text" placeholder="값을 입력 하세요"><span class="point">💊힌트</span></p>
+                    <p class="hint"><img src="images/10.png" alt=""></p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. AI 모델 활용 섹션들 -->
+        <section id="use-predict" class="content-section">
+            <h1>AI 모델 활용</h1>
+            <p class="section-desc">새로운 대량의 데이터셋을 모델에 입력하여 일괄적인 예측 결과 값을 도출합니다.</p>
+            <div class="card-grid">
+                <div class="card"><h3>변수영향도 확인</h3>
+                    <h3>🧯문제</h3><p> 학습한 딥러닝 모델 분석 결과, "쌀종류(rice_type)"을 결정하는데 가장 중
+요한 요소를 작성하시오 </p>
+                    <p><input type="text" placeholder=""><span class="point">💊힌트</span></p>
+                    <p class="hint"><img src="images/11.png" alt=""></p>
+                </div>
+
+               
+            </div>
+        </section>
+    </main>
+
+    <!-- 자바스크립트 영역 -->
+    <script>
+        function switchSection(targetId, event) {
+            event.preventDefault();
+
+            const sections = document.querySelectorAll('.content-section');
+            sections.forEach(sec => sec.classList.remove('active'));
+
+            const targetSection = document.getElementById(targetId);
+            if (targetSection) {
+                targetSection.classList.add('active');
+            }
+
+            const links = document.querySelectorAll('.submenu-item a');
+            links.forEach(link => link.classList.remove('active'));
+
+            event.currentTarget.classList.add('active');
+        }
+
+        document.addEventListener('click', function(event) {
+            if (event.target.classList.contains('point')) {
+                const hintElement = event.target.closest('p').nextElementSibling;
+                if (hintElement && hintElement.classList.contains('hint')) {
+                    if (hintElement.style.display === 'block') {
+                        hintElement.style.display = 'none';
+                    } else {
+                        hintElement.style.display = 'block';
+                    }
+                }
+            }
+        });
+
+        window.addEventListener('DOMContentLoaded', () => {
+            loadSavedFile();
+        });
+
+        function teacherLogin() {
+            const password = prompt("선생님 비밀번호를 입력하세요:");
+            if (password === "cktmdal8589!") {
+                document.getElementById('teacher-auth-box').style.display = 'none';
+                document.getElementById('upload-box').style.display = 'block';
+                alert("교사 모드가 활성화되었습니다. 파일을 업로드할 수 있습니다.");
+            } else if (password !== null) {
+                alert("비밀번호가 틀렸습니다.");
+            }
+        }
+
+        function teacherLogout() {
+            document.getElementById('teacher-auth-box').style.display = 'block';
+            document.getElementById('upload-box').style.display = 'none';
+        }
+
+        function handleFileUpload(event) {
+            const file = event.target.files[0];
+            if (!file) return;
+
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                const base64Date = e.target.result;
+                const fileInfo = {
+                    name: file.name,
+                    size: file.size,
+                    data: base64Date
+                };
+
+                localStorage.setItem('saved_gpa_file', JSON.stringify(fileInfo));
+                renderFileUI(fileInfo);
+                alert('파일이 업로드되었으며 새로고침 시에도 유지됩니다!');
+            };
+            reader.readAsDataURL(file);
+        }
+
+        function loadSavedFile() {
+            const savedData = localStorage.getItem('saved_gpa_file');
+            if (savedData) {
+                const fileInfo = JSON.parse(savedData);
+                renderFileUI(fileInfo);
+            }
+        }
+
+        function renderFileUI(fileInfo) {
+            const container = document.getElementById('file-download-container');
+            container.innerHTML = `
+                <div style="display: flex; align-items: center; justify-content: space-between; background: #ffffff; padding: 10px 15px; border: 1px solid #cbd5e1; border-radius: 6px;">
+                    <div>
+                        <strong style="font-size: 0.9rem; color: #1e293b;">📄 ${fileInfo.name}</strong>
+                        <span style="font-size: 0.8rem; color: #64748b; margin-left: 10px;">(${(fileInfo.size / 1024).toFixed(1)} KB)</span>
+                    </div>
+                    <div>
+                        <a href="${fileInfo.data}" download="${fileInfo.name}" style="background-color: #2563eb; color: white; padding: 6px 14px; font-size: 0.85rem; border-radius: 4px; text-decoration: none; font-weight: 600; margin-right: 8px;">다운로드</a>
+                    </div>
+                </div>
+            `;
+        }
+
+        function deleteFile() {
+            if (confirm("정말 파일을 삭제하시겠습니까?")) {
+                localStorage.removeItem('saved_gpa_file');
+                document.getElementById('file-download-container').innerHTML = '<span style="font-size: 0.85rem; color: #94a3b8;">등록된 파일이 없습니다.</span>';
+            }
+        }
+
+        function downloadCsv() {
+            const link = document.createElement('a');
+            link.href = '../data/rice.csv';
+            link.download = 'rice.csv';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+    </script>
+</body>
+</html>
 
