@@ -531,10 +531,7 @@
     </main>
 
     <!-- 자바스크립트 영역 -->
-    <!-- JavaScript 상호작용 로직 -->
-    <!-- 자바스크립트 영역 -->
-    <!-- JavaScript 상호작용 로직 -->
-    <script>
+   <script>
         function switchSection(sectionId, event) {
             event.preventDefault(); // 기본 앵커 이동 방지
 
@@ -562,6 +559,20 @@
             link.click();
             document.body.removeChild(link);
         }
+
+        // [추가] 💊힌트(.point) 클릭 시 바로 아래 .hint 요소를 토글하는 코드
+        document.addEventListener('DOMContentLoaded', () => {
+            const points = document.querySelectorAll('.point');
+            points.forEach(point => {
+                point.addEventListener('click', function() {
+                    // 현재 클릭한 .point 바로 다음(또는 부모 요소 내)에 있는 .hint를 찾음
+                    const hintBox = this.parentElement.nextElementSibling;
+                    if (hintBox && hintBox.classList.contains('hint')) {
+                        hintBox.classList.toggle('active');
+                    }
+                });
+            });
+        });
     </script>
 
 
