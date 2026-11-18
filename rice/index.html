@@ -190,7 +190,7 @@
         <div class="logo-area">쌀 종류 예측</div>
         <div class="menu-container">
             
-            <!-- 1. 데이터 가져오기 -->
+          <!-- 1. 데이터 가져오기 -->
             <div class="menu-category">
                 <div class="menu-title">1. 데이터 가져오기</div>
                 <ul class="submenu-list">
@@ -234,7 +234,6 @@
                     <li class="submenu-item"><a href="#use-predict" onclick="switchSection('use-predict', event)">AI 모델 활용</a></li>
                 </ul>
             </div>
-
         </div>
     </aside>
 
@@ -533,19 +532,26 @@
 
     <!-- 자바스크립트 영역 -->
     <!-- JavaScript 상호작용 로직 -->
+    <!-- 자바스크립트 영역 -->
+    <!-- JavaScript 상호작용 로직 -->
     <script>
-        function switchSection(sectionId) {
-            // 모든 메뉴 항목에서 active 제거
-            const menuItems = document.querySelectorAll('.menu-item');
-            menuItems.forEach(item => item.classList.remove('active'));
+        function switchSection(sectionId, event) {
+            event.preventDefault(); // 기본 앵커 이동 방지
 
-            // 모든 섹션에서 active 제거
-            const sections = document.querySelectorAll('.section');
+            // 1. 모든 메뉴(a 태그)에서 active 클래스 제거
+            const menuLinks = document.querySelectorAll('.submenu-item a');
+            menuLinks.forEach(link => link.classList.remove('active'));
+
+            // 2. 모든 섹션(.content-section)에서 active 클래스 제거하여 숨김
+            const sections = document.querySelectorAll('.content-section');
             sections.forEach(sec => sec.classList.remove('active'));
 
-            // 클릭한 메뉴와 대응하는 섹션에 active 추가
+            // 3. 클릭한 메뉴와 대응하는 섹션에만 active 클래스 추가
             event.currentTarget.classList.add('active');
-            document.getElementById(sectionId).classList.add('active');
+            const targetSection = document.getElementById(sectionId);
+            if (targetSection) {
+                targetSection.classList.add('active');
+            }
         }
 
         function downloadCsv() {
