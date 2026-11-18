@@ -517,19 +517,19 @@
     </main>
 
     <!-- JavaScript 상호작용 로직 수정 -->
-    <script>
+   <script>
         function switchSection(sectionId, event) {
             event.preventDefault(); // 기본 앵커 이동 방지
 
-            // 1. 모든 메뉴 항목에서 active 클래스 제거
-            const menuItems = document.querySelectorAll('.submenu-item a');
-            menuItems.forEach(item => item.classList.remove('active'));
+            // 1. 모든 메뉴(a 태그)에서 active 클래스 제거
+            const menuLinks = document.querySelectorAll('.submenu-item a');
+            menuLinks.forEach(link => link.classList.remove('active'));
 
-            // 2. 모든 섹션에서 active 클래스 제거 (기존 .section -> .content-section 으로 수정)
+            // 2. 모든 섹션(.content-section)에서 active 클래스 제거하여 숨김
             const sections = document.querySelectorAll('.content-section');
             sections.forEach(sec => sec.classList.remove('active'));
 
-            // 3. 클릭한 메뉴와 대응하는 섹션에만 active 추가
+            // 3. 클릭한 메뉴와 대응하는 섹션에만 active 클래스 추가
             event.currentTarget.classList.add('active');
             const targetSection = document.getElementById(sectionId);
             if (targetSection) {
@@ -539,12 +539,26 @@
 
         function downloadCsv() {
             const link = document.createElement('a');
-            link.href = '../data/bmi_data.csv';
-            link.download = 'bmi_data.csv';
+            link.href = '../data/rice.csv'; // data 폴더의 상대 경로
+            link.download = 'rice.csv';    // 다운로드될 파일명
             document.body.appendChild(link);
             link.click();
             document.body.removeChild(link);
         }
+
+        // [추가] 💊힌트(.point) 클릭 시 바로 아래 .hint 요소를 토글하는 코드
+        document.addEventListener('DOMContentLoaded', () => {
+            const points = document.querySelectorAll('.point');
+            points.forEach(point => {
+                point.addEventListener('click', function() {
+                    // 현재 클릭한 .point 바로 다음(또는 부모 요소 내)에 있는 .hint를 찾음
+                    const hintBox = this.parentElement.nextElementSibling;
+                    if (hintBox && hintBox.classList.contains('hint')) {
+                        hintBox.classList.toggle('active');
+                    }
+                });
+            });
+        });
     </script>
 
 </body>
