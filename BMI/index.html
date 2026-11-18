@@ -341,11 +341,9 @@
                 return;
             }
 
-            // cm를 m로 변환하여 BMI 계산 (체중 / 키(m)^2)
             const heightM = heightCm / 100;
             const bmi = weightKg / (heightM * heightM);
 
-            // 대한비만학회 기준 판정
             let grade = "";
             let color = "#1e293b";
             if (bmi < 18.5) {
@@ -382,10 +380,8 @@
                         <li><strong>heignt(inches)</strong> : 60.3~75.2 분포로 구성된 실수형 데이터</li>
                         <li><strong>Weight(pounds)</strong> : 78~171파운드의 분포로 구성된 실수형 데이터</li>
                         <li><strong>BMI</strong> : 13.1~26분포로 구성된 실수형 데이터</li>
-                    
                     </ul>
-        </div>
-               
+                </div>
             </div>
         </section>
 
@@ -396,13 +392,10 @@
             <div class="card-grid">
                 <div class="card"><h3>🧯문제</h3><p>종속변수와 독립변수를 작성하세요</p>
                     <p><input type="text" placeholder="종속변수:     , 독립변수:     "><span class="point">💊힌트</span></p>
-                  
-                  
                 </div>
-                     <div class="card"><h3>🧯문제</h3><p>중복행의 갯수는? 
+                <div class="card"><h3>🧯문제</h3><p>중복행의 갯수는?</p> 
                     <p><input type="text" placeholder="값을 입력 하세요"><span class="point">💊힌트</span></p>
                    <p class="hint"><img src="images/1.png" alt=""></p>
-                  
                 </div>
                 <div class="card"><h3>🧯문제</h3><p>데이터의 전체 개수(observation)를 작성하시오. </p>
                    <p><input type="text" placeholder="값을 입력 하세요"><span class="point">💊힌트</span></p>
@@ -430,30 +423,23 @@
             <h1>시각화분석</h1>
             <p class="section-desc">데이터 내 누락된 값(NaN)의 분포와 정상 범위를 벗어난 아웃라이어를 찾아냅니다.</p>
             <div class="card-grid">
-                <div class="card"><h3>🧯문제</h3><p> 산점도에서 몸무게와BMI 로 컬럼을 선택하고 분석 결과에 대해 설명하세요
-                    [산점도]  </p>
-                   
+                <div class="card"><h3>🧯문제</h3><p> 산점도에서 몸무게와BMI 로 컬럼을 선택하고 분석 결과에 대해 설명하세요 [산점도]  </p>
                     <p><input type="text" placeholder=""><span class="point">💊힌트</span></p>
                    <p class="hint"><img src="images/산점도2.png" alt=""></p>
                 </div>
 
-                 <div class="card"><h3>🧯문제</h3><p>  남자, 여자 의 체질량분석에서 중앙값을 작성하세요
-                    [박스차트]  </p>
-                  
+                 <div class="card"><h3>🧯문제</h3><p> 남자, 여자 의 체질량분석에서 중앙값을 작성하세요 [박스차트]  </p>
                     <p><input type="text" placeholder="남자 중앙값:         , 여자 중앙값:         "><span class="point">💊힌트</span></p>
                    <p class="hint"><img src="images/성별BMI.png" alt=""></p>
                 </div>
-
                 
                 <div class="card"><h3>🧯문제</h3><p> BMI와 각칼럼간의 상관관계가 높은 순서대로 작성하세요</p>
                    <p><input type="text" placeholder=""><span class="point">💊힌트</span></p>
                    <p class="hint"><img src="images/히트맵.png" alt=""></p>
                 </div>
-
             </div>
         </section>
 
-        <!-- 비지도학습분석 섹션 추가 (메뉴 링크 대응) -->
         <section id="analysis-corr" class="content-section">
             <h1>비지도학습분석</h1>
             <p class="section-desc">군집화 및 차원 축소 등의 비지도 학습 기법을 활용하여 데이터의 구조를 파악합니다.</p>
@@ -476,10 +462,8 @@
             <p class="section-desc">결측치와 중복 데이터를 처리하고 정돈된 형태로 정제합니다.</p>
             <div class="card-grid">
                 <div class="card"><h3>🧯문제</h3>
-                   <p>키의  결측치(missing cells)의 대체값은 최빈값, 중앙값, 평균값, 상수 중 무엇으로(1) 해야하며 , 해당 값으로 대체 했을경우 대체값은(2) ?</p>
-          
-                      <p><input type="text" placeholder="   (1)   ,  (2)     "><span class="point">💊힌트</span></p>
-                   <!--  <p class="hint"><img src="images/9.png" alt=""></p>-->
+                   <p>키의 결측치(missing cells)의 대체값은 최빈값, 중앙값, 평균값, 상수 중 무엇으로(1) 해야하며 , 해당 값으로 대체 했을경우 대체값은(2) ?</p>
+                   <p><input type="text" placeholder="   (1)   ,  (2)     "><span class="point">💊힌트</span></p>
                 </div>
             </div>
         </section>
@@ -497,9 +481,7 @@
             <div class="card-grid">
                 <div class="card">
                     <h3>딥러닝 학습</h3>
-                   
                     <h3>🧯문제</h3><p>딥러닝 학습에서 Output칼럼과, 제외칼럼 , input 칼럼을 작성 하세요</p>
-                   
                     <p><input type="text" placeholder=" Output칼럼:     ,제외칼럼:,     input 칼럼: "><span class="point">💊힌트</span></p>
                     <p class="hint"><img src="images/2.png" alt=""></p>
                 </div>
@@ -509,9 +491,6 @@
                 <div class="card">
                     <h3>🧯문제</h3>
                     <p>Ouptut 컬럼은 데이터 유형과, 디코더 선택, 활성화 함수를 어떻게 설정 해야 하는지 작성 하시오</p>
-                    
-                   
-                    
                     <p><input type="text" placeholder=" 데이터 유형과, 디코더 선택, 활성화 함수"><span class="point">💊힌트</span></p>
                     <p class="hint"><img src="images/3.png" alt=""></p>
                 </div>
@@ -524,41 +503,44 @@
             <p class="section-desc">새로운 대량의 데이터셋을 모델에 입력하여 일괄적인 예측 결과 값을 도출합니다.</p>
             <div class="card-grid">
                 <div class="card"><h3>변수영향도 확인</h3>
-                    <h3>🧯문제</h3><p> 학습한 딥러닝 모델 분석 결과,BMI를 결정하는데 가장 중
-요한 요소를 작성하시오 </p>
+                    <h3>🧯문제</h3><p> 학습한 딥러닝 모델 분석 결과,BMI를 결정하는데 가장 중요한 요소를 작성하시오 </p>
                     <p><input type="text" placeholder=""><span class="point">💊힌트</span></p>
                     <p class="hint"><img src="images/변수영향도.png" alt=""></p>
                 </div>
- <div class="card"><h3>시뮬레이션</h3>
+                <div class="card"><h3>시뮬레이션</h3>
                     <h3>🧯문제</h3><p> 학습한 딥러닝 모델 분석 결과 시뮬레이션을 아래의 조건에 맞게 실행후 결과를 작성하시오</p>
                     <p><input type="text" placeholder=""><span class="point">💊힌트</span></p>
                     <p class="hint"><img src="images/시뮬레이션.png" alt=""></p>
                 </div>
-               
             </div>
         </section>
     </main>
 
-    <!-- JavaScript 상호작용 로직 -->
+    <!-- JavaScript 상호작용 로직 수정 -->
     <script>
-        function switchSection(sectionId) {
-            // 모든 메뉴 항목에서 active 제거
-            const menuItems = document.querySelectorAll('.menu-item');
+        function switchSection(sectionId, event) {
+            event.preventDefault(); // 기본 앵커 이동 방지
+
+            // 1. 모든 메뉴 항목에서 active 클래스 제거
+            const menuItems = document.querySelectorAll('.submenu-item a');
             menuItems.forEach(item => item.classList.remove('active'));
 
-            // 모든 섹션에서 active 제거
-            const sections = document.querySelectorAll('.section');
+            // 2. 모든 섹션에서 active 클래스 제거 (기존 .section -> .content-section 으로 수정)
+            const sections = document.querySelectorAll('.content-section');
             sections.forEach(sec => sec.classList.remove('active'));
 
-            // 클릭한 메뉴와 대응하는 섹션에 active 추가
+            // 3. 클릭한 메뉴와 대응하는 섹션에만 active 추가
             event.currentTarget.classList.add('active');
-            document.getElementById(sectionId).classList.add('active');
+            const targetSection = document.getElementById(sectionId);
+            if (targetSection) {
+                targetSection.classList.add('active');
+            }
         }
 
         function downloadCsv() {
             const link = document.createElement('a');
-            link.href = '../data/bmi_data.csv'; // data 폴더의 상대 경로
-            link.download = 'bmi_data.csv';    // 다운로드될 파일명
+            link.href = '../data/bmi_data.csv';
+            link.download = 'bmi_data.csv';
             document.body.appendChild(link);
             link.click();
             document.body.removeChild(link);
@@ -567,4 +549,3 @@
 
 </body>
 </html>
-
