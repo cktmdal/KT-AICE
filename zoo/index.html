@@ -253,7 +253,7 @@
 
 
             <div class="card-grid" style="margin-top: 20px;">
-                <div class="card"><h3 class="card_h3">어떤 데이터가 필요할까?</h3><p class="care_p">zoo.csv</p></div>
+                <div class="card"><h3 class="card_h3">어떤 데이터가 필요할까?</h3><p class="care_p">class.csv</p></div>
                 <div class="card"><h3>쌀 종류 예측?</h3><p>A정미소에서는 요리 종류에 따라 각기 다른 종류의 쌀 사용을 위해
 쌀 데이터를 이용하여 쌀 종류를 예측하고자 한다.</p></div>
             </div>
@@ -550,8 +550,8 @@
 
         function downloadCsv() {
             const link = document.createElement('a');
-            link.href = '../data/zoo.csv'; // data 폴더의 상대 경로
-            link.download = 'zoo.csv';    // 다운로드될 파일명
+            link.href = '../data/class.csv'; // data 폴더의 상대 경로
+            link.download = 'class.csv';    // 다운로드될 파일명
             document.body.appendChild(link);
             link.click();
             document.body.removeChild(link);
