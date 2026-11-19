@@ -246,14 +246,14 @@
             <p class="section-desc">로컬 저장소에 있는 CSV, Excel, JSON 등의 정형 데이터 파일을 업로드.</p>
             
                <h2>데이터 가져오기 (Data Loading)</h2>
-            <p>실습에 사용할 정제된 모바일 중고기기 데이터를 불러옵니다.</p>
+            <p>실습에 사용할 정제된  동물 분석 데이터 불러옵니다.</p>
             <div class="form-group" style="max-width: 400px; margin-top: 10px;">
                 <button class="btn" onclick="downloadCsv()">데이터 다운로드</button>
             </div>
 
 
             <div class="card-grid" style="margin-top: 20px;">
-                <div class="card"><h3 class="card_h3">어떤 데이터가 필요할까?</h3><p class="care_p">rice.csv</p></div>
+                <div class="card"><h3 class="card_h3">어떤 데이터가 필요할까?</h3><p class="care_p">zoo.csv</p></div>
                 <div class="card"><h3>쌀 종류 예측?</h3><p>A정미소에서는 요리 종류에 따라 각기 다른 종류의 쌀 사용을 위해
 쌀 데이터를 이용하여 쌀 종류를 예측하고자 한다.</p></div>
             </div>
@@ -550,8 +550,8 @@
 
         function downloadCsv() {
             const link = document.createElement('a');
-            link.href = '../data/rice.csv'; // data 폴더의 상대 경로
-            link.download = 'rice.csv';    // 다운로드될 파일명
+            link.href = '../data/zoo.csv'; // data 폴더의 상대 경로
+            link.download = 'zoo.csv';    // 다운로드될 파일명
             document.body.appendChild(link);
             link.click();
             document.body.removeChild(link);
