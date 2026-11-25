@@ -254,8 +254,7 @@
 
             <div class="card-grid" style="margin-top: 20px;">
                 <div class="card"><h3 class="card_h3">어떤 데이터가 필요할까?</h3><p class="care_p">zoo.csv</p></div>
-                <div class="card"><h3>쌀 종류 예측?</h3><p>A정미소에서는 요리 종류에 따라 각기 다른 종류의 쌀 사용을 위해
-쌀 데이터를 이용하여 쌀 종류를 예측하고자 한다.</p></div>
+                <div class="card"><h3>동물 분류</h3><p>동물의 종을 나누는 기준을 이해하고 동물의 특징에 딸라 동물 종을 구분할 수 있다.</p></div>
             </div>
         </section>
 
@@ -263,23 +262,111 @@
             <h1>데이터 가져오기</h1>
             <p class="section-desc">분석 데이터 문제정의</p>
             <div class="card-grid">
-                <div class="card"><h3>문제정의</h3><p> 쌀 데이터를 활용해서, 쌀 종류를 예측하는 인공지능 모델을 만들어보자</p></div>
-                <div class="card"><h3> PAPS 등급측정은?</h3><p> 심폐지구력, 유연성, 근력과 근지구력, 순발력, 비만정도를 측정 =>1등급(아주높음), 2등급(높음),3등급(보통),4등급(낮음),5등급(매우낮음)</p></div>
+                <div class="card"><h3>문제정의</h3><p> 동물 데이터를 이해하고 동물의 종류를 구분할 수 있다</p></div>
+            
                <div class="card">
                     <h3>데이터 컬럼명</h3>
-                    <ul style="list-style-type: disc; padding-left: 20px; line-height: 1.6; margin: 0;">
-                        <li><strong>id</strong> : 고유번호</li>
-                        <li><strong>area</strong> : 면적</li>
-                        <li><strong>vertical_length</strong> : 장축길이</li>
-                        <li><strong>horizontal_length</strong> : 보조축길이</li>
-                        <li><strong>eccentricity</strong> : 이심률</li>
-                        <li><strong>convex_area</strong> : 볼록면적</li>
-                        <li><strong>diameter</strong> : 지름</li>
-                        <li><strong>perimeter</strong> : 둘레</li>
-                        <li><strong>roundness</strong> : 원형율</li>
-                        <li><strong>thickness</strong> : 두께</li>
-                        <li><strong>rice_type</strong> : 쌀종류</li>
-                    </ul>
+                    <table border="1" style="border-collapse: collapse; width: 100%; text-align: left;">
+  <thead>
+    <tr style="background-color: #f2f2f2;">
+      <th style="padding: 8px;">컬럼명</th>
+      <th style="padding: 8px;">한국어 번역</th>
+      <th style="padding: 8px;">데이터 특성 요약</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 8px;"><code>animal_name</code></td>
+      <td style="padding: 8px;">동물 이름</td>
+      <td style="padding: 8px;">동물의 명칭</td>
+    </tr>
+    <tr>
+      <td style="padding: 8px;"><code>hair</code></td>
+      <td style="padding: 8px;">털 유무</td>
+      <td style="padding: 8px;">털이 있는지 여부 (0/1)</td>
+    </tr>
+    <tr>
+      <td style="padding: 8px;"><code>feathers</code></td>
+      <td style="padding: 8px;">깃털 유무</td>
+      <td style="padding: 8px;">깃털이 있는지 여부 (0/1)</td>
+    </tr>
+    <tr>
+      <td style="padding: 8px;"><code>eggs</code></td>
+      <td style="padding: 8px;">알 유무 (산란 여부)</td>
+      <td style="padding: 8px;">알을 낳는지 여부 (0/1)</td>
+    </tr>
+    <tr>
+      <td style="padding: 8px;"><code>milk</code></td>
+      <td style="padding: 8px;">젖 분비 유무</td>
+      <td style="padding: 8px;">포유류처럼 젖을 먹이는지 여부 (0/1)</td>
+    </tr>
+    <tr>
+      <td style="padding: 8px;"><code>airborne</code></td>
+      <td style="padding: 8px;">비행 가능 여부</td>
+      <td style="padding: 8px;">날 수 있는지 여부 (0/1)</td>
+    </tr>
+    <tr>
+      <td style="padding: 8px;"><code>aquatic</code></td>
+      <td style="padding: 8px;">수생 여부</td>
+      <td style="padding: 8px;">물속에 서식하는지 여부 (0/1)</td>
+    </tr>
+    <tr>
+      <td style="padding: 8px;"><code>predator</code></td>
+      <td style="padding: 8px;">포식자 여부</td>
+      <td style="padding: 8px;">다른 동물을 잡아먹는 포식자인지 여부 (0/1)</td>
+    </tr>
+    <tr>
+      <td style="padding: 8px;"><code>toothed</code></td>
+      <td style="padding: 8px;">이빨 유무</td>
+      <td style="padding: 8px;">이빨이 있는지 여부 (0/1)</td>
+    </tr>
+    <tr>
+      <td style="padding: 8px;"><code>backbone</code></td>
+      <td style="padding: 8px;">척추 유무</td>
+      <td style="padding: 8px;">척추동물에 해당하는지 여부 (0/1)</td>
+    </tr>
+    <tr>
+      <td style="padding: 8px;"><code>breathes</code></td>
+      <td style="padding: 8px;">호흡 여부</td>
+      <td style="padding: 8px;">호흡 기관을 통해 숨을 쉬는지 여부 (0/1)</td>
+    </tr>
+    <tr>
+      <td style="padding: 8px;"><code>venomous</code></td>
+      <td style="padding: 8px;">독성 유무</td>
+      <td style="padding: 8px;">독이 있는지 여부 (0/1)</td>
+    </tr>
+    <tr>
+      <td style="padding: 8px;"><code>fins</code></td>
+      <td style="padding: 8px;">지느러미 유무</td>
+      <td style="padding: 8px;">지느러미가 있는지 여부 (0/1)</td>
+    </tr>
+    <tr>
+      <td style="padding: 8px;"><code>legs</code></td>
+      <td style="padding: 8px;">다리 개수</td>
+      <td style="padding: 8px;">다리의 수 (정수 값)</td>
+    </tr>
+    <tr>
+      <td style="padding: 8px;"><code>tail</code></td>
+      <td style="padding: 8px;">꼬리 유무</td>
+      <td style="padding: 8px;">꼬리가 있는지 여부 (0/1)</td>
+    </tr>
+    <tr>
+      <td style="padding: 8px;"><code>domestic</code></td>
+      <td style="padding: 8px;">가축화 여부</td>
+      <td style="padding: 8px;">길들여진 가축인지 여부 (0/1)</td>
+    </tr>
+    <tr>
+      <td style="padding: 8px;"><code>catsize</code></td>
+      <td style="padding: 8px;">고양이 크기 이상 여부</td>
+      <td style="padding: 8px;">고양이 정도 크기 이상인지 여부 (0/1)</td>
+    </tr>
+    <tr>
+      <td style="padding: 8px;"><code>class_type</code></td>
+      <td style="padding: 8px;">동물 분류 유형 (클래스)</td>
+      <td style="padding: 8px;">예측 대상이 되는 동물 종/분류 그룹</td>
+    </tr>
+  </tbody>
+</table>
         </div>
                
             </div>
