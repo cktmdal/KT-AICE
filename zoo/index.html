@@ -333,9 +333,13 @@
                 
                 <div class="card"><h3>🧯문제</h3><p> [히트맵]을 참고하여 이빨 칼럼과 가장 연관성이 높은 칼럼과 상관계수를 작성하시오 </p>
                    <p><input type="text" placeholder=""><span class="point">💊힌트</span></p>
-                   <p class="hint">알</p>
+                   <p class="hint">알<br>[상관관계의 크기(절댓값 기준)가 가장 높은 변수 -> 이빨이 있는 동물(포유류 등)일수록 알을 낳지 않는 경향이 강하고, 알을 낳는 동물(조류, 어류, 파충류 등)일수록 이빨이 없는 경향이 강하다는 강한 음의 상관관계를 뜻합니다.]</p>
                 </div>
-
+                
+                 <div class="card"><h3>🧯문제</h3><p> [히트맵]을 참고하여 이빨 칼럼에서 양의 상관계수가 가장 높은 칼럼을 작성하시오 </p>
+                   <p><input type="text" placeholder=""><span class="point">💊힌트</span></p>
+                   <p class="hint">포유 <br>[포유류일수록 이빨을 가진 경우가 많다는 양의 상관관계를 뜻합니다.]</p>
+                </div>
                 <div class="card"><h3>🧯문제</h3><p>[분포차트]를 참고하여 동물의 종류에서 포유류(1)인 count를 작성하시오  </p>
                    <p><input type="text" placeholder=""><span class="point">💊힌트</span></p>
                    <p class="hint">41</p>
@@ -343,7 +347,7 @@
 
                <div class="card"><h3>🧯문제</h3><p>[분포차트]를 참고하여 동물 분류의 분류번호별 개수가 eggs인 데이터와 아닌 데이터를 구분하여 
                    포유류(1)중 알을 낳는 포유류와 알을 낳지 않는 포유류의 총 값(count)을 작성하시오 
-               값을 작성하시오 (x 칼럼 - 분류, y 칼럼 - 알)</p>
+               값을 작성하시오 (x 칼럼 - 분류, Hue 칼럼 - 알)</p>
                    <p><input type="text" placeholder=""><span class="point">💊힌트</span></p>
                    <p class="hint">41</p>
                 </div>
@@ -355,7 +359,7 @@
                 </div>
 
                    <div class="card"><h3>🧯문제</h3><p>[박스차트] 동물 분류에서 무척추동물인 동물 뷴류가 7인 박스차트를 보고 q1, q3, 중앙값을 순서대로 작성하시오 
-                       (x 칼럼 - 다리, y 칼럼 - 분류)</p>
+                       (x 칼럼 - 다리수, y 칼럼 - 분류)</p>
                    <p><input type="text" placeholder=""><span class="point">💊힌트</span></p>
                    <p class="hint">q1 : 0  q3 : 6,  중앙값(median):4.5</p>
                 </div>
@@ -442,7 +446,7 @@
                         <ul style="list-style-type: circle; padding-left: 20px; margin: 5px 0 0 0;">
                             <li>데이터 유형은 모델 유형에 맞게 설정하시오.</li>
     
-                            <li>FC레이어수: 2, FC레이어크기: 126, 드롭아웃: 0.1, 활성함수: softmax, FC활성함수: relu</li>
+                            <li>FC레이어수: 2, FC레이어크기: 126, 드롭아웃: 0, 활성함수: softmax, FC활성함수: relu</li>
                          
                         </ul>
                     </li>
