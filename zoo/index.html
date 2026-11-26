@@ -596,8 +596,7 @@
     </main>
 
     <!-- 자바스크립트 영역 -->
-    <!-- JavaScript 상호작용 로직 -->
-   <!-- 자바스크립트 영역 -->
+  <!-- 자바스크립트 영역 -->
     <!-- JavaScript 상호작용 로직 -->
     <script>
         function switchSection(sectionId, event) {
@@ -631,6 +630,27 @@
             link.click();
             document.body.removeChild(link);
         }
+
+        // .point 클릭 시 인접(또는 같은 카드 내) .hint 표시/숨김 토글
+        document.addEventListener('DOMContentLoaded', function () {
+            const points = document.querySelectorAll('.point');
+            points.forEach(point => {
+                point.addEventListener('click', function () {
+                    const parentP = this.closest('p');
+                    let hint = parentP ? parentP.nextElementSibling : null;
+
+                    if (!hint || !hint.classList.contains('hint')) {
+                        const card = this.closest('.card');
+                        hint = card ? card.querySelector('.hint') : null;
+                    }
+
+                    if (hint) {
+                        const isVisible = window.getComputedStyle(hint).display !== 'none';
+                        hint.style.display = isVisible ? 'none' : 'block';
+                    }
+                });
+            });
+        });
     </script>
 
 
