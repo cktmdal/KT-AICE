@@ -599,19 +599,30 @@
 
     <!-- 자바스크립트 영역 -->
     <!-- JavaScript 상호작용 로직 -->
+   <!-- 자바스크립트 영역 -->
+    <!-- JavaScript 상호작용 로직 -->
     <script>
-        function switchSection(sectionId) {
-            // 모든 메뉴 항목에서 active 제거
-            const menuItems = document.querySelectorAll('.menu-item');
+        function switchSection(sectionId, event) {
+            if (event) {
+                event.preventDefault();
+            }
+
+            // 모든 서브메뉴 링크에서 active 제거
+            const menuItems = document.querySelectorAll('.submenu-item a');
             menuItems.forEach(item => item.classList.remove('active'));
 
             // 모든 섹션에서 active 제거
-            const sections = document.querySelectorAll('.section');
+            const sections = document.querySelectorAll('.content-section');
             sections.forEach(sec => sec.classList.remove('active'));
 
             // 클릭한 메뉴와 대응하는 섹션에 active 추가
-            event.currentTarget.classList.add('active');
-            document.getElementById(sectionId).classList.add('active');
+            if (event && event.currentTarget) {
+                event.currentTarget.classList.add('active');
+            }
+            const targetSection = document.getElementById(sectionId);
+            if (targetSection) {
+                targetSection.classList.add('active');
+            }
         }
 
         function downloadCsv() {
