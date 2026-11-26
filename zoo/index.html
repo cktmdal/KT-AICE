@@ -421,28 +421,45 @@
                 <div class="card"><h3>🧯문제</h3><p>milik의 칼럼에서 가장 관련이 높은 속성은 (  1  )으로 상관관계수는 (   2  ) 으로 확인 할 수 있다 
                     [히드맵]  </p>
                     <p><input type="text" placeholder="순서대로 작성 하세요"><span class="point">💊힌트</span></p>
+                      <p class="hint">eggs, 0.939</p>
                                                      <!-- eggs, 0.939 -->
                 </div>
 
-                 <div class="card"><h3>🧯문제</h3><p>  가장높은 양의 상관관계(correlation)를 보이는 두 변수의 조합을 작성하시오. 
-                    [히드맵]  </p>
+                 <div class="card"><h3>🧯문제</h3><p> [히트맵]을 참고하여 airborne 칼럼과 가장 연관성이 높은 칼럼과 상관계수를 작성하시오 </p>
                  
-                    <p><input type="text" placeholder="변수명"><span class="point">💊힌트</span></p>
-                   <p class="hint"><img src="images/.png" alt=""></p>
+                    <p><input type="text" placeholder="칼럼명"><span class="point">💊힌트</span></p>
+                   <p class="hint">feathers</p>
                 </div>
 
                 
-                <div class="card"><h3>🧯문제</h3><p>eccentricity(이심률)에서 한국쌀중 이심률이 0.94인 데이터의 갯수는? [분포차트] </p>
+                <div class="card"><h3>🧯문제</h3><p> [히트맵]을 참고하여 toothed 칼럼과 가장 연관성이 높은 칼럼과 상관계수를 작성하시오 </p>
                    <p><input type="text" placeholder=""><span class="point">💊힌트</span></p>
-                   <p class="hint"><img src="images/4.png" alt=""></p>
+                   <p class="hint">eggs</p>
                 </div>
 
-                <div class="card"><h3>🧯문제</h3><p>Y칼럼 eccentricity, X칼럼 rice_type 로 하고 한국쌀의 min값을 작성하시오? [박스차트] </p>
+                <div class="card"><h3>🧯문제</h3><p>[분포차트]를 참고하여 동물의 종류에서 포유류(1)인 count를 작성하시오  </p>
                    <p><input type="text" placeholder=""><span class="point">💊힌트</span></p>
-                   <p class="hint"><img src="images/5.png" alt=""></p>
+                   <p class="hint">41</p>
                 </div>
 
-              wlrma
+               <div class="card"><h3>🧯문제</h3><p>[분포차트]를 참고하여 동물 분류의 분류번호별 개수가 eggs인 데이터와 아닌 데이터를 구분하여 
+                   포유류(1)중 알을 낳는 포유류와 알을 낳지 않는 포유류의 총 값(count)을 작성하시오 
+               값을 작성하시오 (x 칼럼 - class_type, y 칼럼 - eggs)</p>
+                   <p><input type="text" placeholder=""><span class="point">💊힌트</span></p>
+                   <p class="hint">41</p>
+                </div>
+
+                <div class="card"><h3>🧯문제</h3><p>[분포차트]동물 분류중 등뼈가 있는 동물 분류 번호와 등뼈가 없는 동물 분류 번호를 확인하여 작성 하시
+               값을 작성하시오 (x 칼럼 - class_type, y 칼럼 - backbone)</p>
+                   <p><input type="text" placeholder=""><span class="point">💊힌트</span></p>
+                   <p class="hint">등뼈가 있는 번호 1,2,3,4,5, 등뼈가 없는 번호 5,6</p>
+                </div>
+
+                   <div class="card"><h3>🧯문제</h3><p>[박스차트] 동물 분류에서 무척추동물인 동물 뷴류가 7인 박스차트를 보고 q1, q3, 중앙값을 순서대로 작성하시오 
+                       (x 칼럼 - legs, y 칼럼 - class_type)</p>
+                   <p><input type="text" placeholder=""><span class="point">💊힌트</span></p>
+                   <p class="hint">q1 : 0  q3 : 6,  중앙값(median):4.5</p>
+                </div>
             </div>
         </section>
 
@@ -469,16 +486,16 @@
             <p class="section-desc">결측치와 중복 데이터를 처리하고 정돈된 형태로 정제합니다.</p>
             <div class="card-grid">
                 <div class="card"><h3>🧯문제</h3>
-                   <p>모든 변수의 결측치(missing cells)를 다음 가이드에 따라 처리한 후, "면적(area)"의 결
-측치(missing cells)를 대체하는 값을 작성하시오</p>
+                   <p>모든 변수의 결측치(missing cells)를 다음 가이드에 따라 처리하시오 </p>
                    <ul style="list-style-type: disc; padding-left: 20px; line-height: 1.6; margin: 10px 0;">
                     <li>종속변수를 제외한 모든 변수의 결측치(missing cells)를 처리하시오.</li>
                     <li>수치형 데이터로 구성된 변수는 중앙값(median)로 대체하시오.</li>
                     <li>범주형 데이터로 구성된 변수는 최빈값(most_frequent)으로 대체하시오.</li>
+                    <li><b>legs는 strategy의 값을  Min-Max-scaler로 변경하여 조정하시오</b></li>
                     <li>수행 후 기존 변수는 삭제하고 [가공 데이터 저장]을 클릭하여 가공된 데이터를 저장하시오.</li>
                </ul>
                       <p><input type="text" placeholder=""><span class="point">💊힌트</span></p>
-                   <p class="hint"><img src="images/9.png" alt=""></p>
+                   <p class="hint"></p>
                 </div>
             </div>
         </section>
@@ -508,80 +525,53 @@
                         </ul>
                     </li>
                     <li>Input 칼럼:
-                        <ul style="list-style-type: circle; padding-left: 20px; margin: 5px 0 0 0;">
-                            <li>"고유번호(id)"는 제외 칼럼으로 지정하시오.</li>
+                        <ul style="list-style-type: circle; padding-left: 20px; margin: 5px 0 0 0;">  
                             <li>범주형 변수는 데이터 인코더를 sparse로 설정하시오.</li>
                         </ul>
                     </li>
                     <li>Output 칼럼:
                         <ul style="list-style-type: circle; padding-left: 20px; margin: 5px 0 0 0;">
-                            <li>종속변수를 Output 칼럼으로 지정하시오.</li>
+                            <li>종속변수인 class_type는  Output 칼럼으로 지정하시오.</li>
+                        </ul>
+                    </li>
+                     <li>제외 칼럼:
+                        <ul style="list-style-type: circle; padding-left: 20px; margin: 5px 0 0 0;">
+                            <li>종속변수와 상관관계가 적은 칼럼을 제외변수로 지정하시오 </li>
+                            <li> animal_name, feathers, airborne ,predator,fins,legs ,legs_MS, domestic는 제외컬럼입니다</li>
                         </ul>
                     </li>
                     <li>칼럼 Parameter 설정:
                         <ul style="list-style-type: circle; padding-left: 20px; margin: 5px 0 0 0;">
                             <li>데이터 유형은 모델 유형에 맞게 설정하시오.</li>
-                            <li>FC레이어수: 1, FC레이어크기: 20, 드롭아웃: 0, 활성함수: softmax, FC활성함수: relu</li>
+    
+                            <li>FC레이어수: 2, FC레이어크기: 126, 드롭아웃: 0.1, 활성함수: softmax, FC활성함수: relu</li>
+                         
                         </ul>
                     </li>
                     <li>학습 Parameter 설정:
                         <ul style="list-style-type: circle; padding-left: 20px; margin: 5px 0 0 0;">
-                            <li>Epochs: 10, 그 외 초기 설정값 사용</li>
+                              <li>Epochs:100, Batch Size:25, Early Stop: 20, 교차 검증 fold 수: 10</li>
                         </ul>
                     </li>
                     <li>답안 작성:
                         <ul style="list-style-type: circle; padding-left: 20px; margin: 5px 0 0 0;">
                             <li>모델 학습 후 오른쪽 상단의 [모델 저장] 기능을 통해 모델을 저장하시오.</li>
-                            <li>정답 작성은 반올림하여 소수점 넷째 자리까지 작성하시오.</li>
+                            
                         </ul>
                     </li>
                 </ul>
+                          
+                <div class="card"><h3>🧯문제</h3><p>데이터 학습후  Accuracy(정확도)를  작성하시오 (정답 작성은 반올림하여 소수점 둘째 자리까지 작성하시오.)</p>
+                   <p><input type="text" placeholder=""><span class="point">💊힌트</span></p>
+                   <p class="hint">0.80</p>
+                </div>
             </div>
                     <p><input type="text" placeholder=""><span class="point">💊힌트</span></p>
-                    <p class="hint"><img src="images/12.png" alt=""></p>
+                    <p class="hint">0.80</p>
                 </div>
             </div>
 
-            <div class="card-grid" style="margin-top: 20px;">
-                <div class="card">
-                    <h3>🧯문제</h3>
-                    <p>아래 가이드에 따라 딥러닝을 학습하고 정확도를 작성하시오</p>
-                    
-                    <div style="width: 100%; box-sizing: border-box; background-color: #E5E5E5; border: 1px solid #999999; padding: 16px; margin: 15px 0; font-weight: bold; border-radius: 6px; overflow-wrap: break-word;">
-                         <ul style="padding-left: 20px;">
-                             <li>작업 데이터 선택: 가공된 데이터를 사용하세요</li>
-                             <li> Input 칼럼
-                                 <ul>
-                                         <li>연도, 시도, 학교급, 학년_IM, BMI는 제외 컬럼으로 지정</li>
-                                         <li>범주형 변수는 데이터 인코더를, sparse로 설정</li>
-                                 </ul>
-                             </li>
-                             <li>
-                                 Output 칼럼 : 종속변수를 Output로 설정
-                             </li>
-                             <li> 칼럼 parameter설정
-                                 <ul>
-                                         <li>데이터 유형은 모델 유형에 맞게 설정하시오</li>
-                                         <li>FC레이어수:2. FC레이어크기:100, 드롭아웃0, 활성화함수 relu</li>
-                                 </ul>
-                             </li>
-                             <li>
-                                 학습 Parameter 설정 : Epochs:2, Batch size:128, Early Stop:5, Optimizer: adam, Learning Rate:0.001, 교차검증 fold수 :1
-                             </li>
-                             <li>
-                                 답안작성
-                                 <ul>
-                                         <li>모델 학습후 오른쪽 상단의[모델저장 ]기능을 통해 모델을 저장하시오</li>
-                                         <li>정답 작성은 반올림하여 소숫점 넷째 자리까지 작성하시오</li>
-                                 </ul>
-                             </li>
-                         </ul>
-                    </div>
-                    
-                    <p><input type="text" placeholder="값을 입력 하세요"><span class="point">💊힌트</span></p>
-                    <p class="hint"><img src="images/10.png" alt=""></p>
-                </div>
-            </div>
+           
         </section>
 
         <!-- 5. AI 모델 활용 섹션들 -->
@@ -590,10 +580,16 @@
             <p class="section-desc">새로운 대량의 데이터셋을 모델에 입력하여 일괄적인 예측 결과 값을 도출합니다.</p>
             <div class="card-grid">
                 <div class="card"><h3>변수영향도 확인</h3>
-                    <h3>🧯문제</h3><p> 학습한 딥러닝 모델 분석 결과, "쌀종류(rice_type)"을 결정하는데 가장 중
-요한 요소를 작성하시오 </p>
+                    <h3>🧯문제</h3><p> 학습한 딥러닝 모델 분석 결과, 동물분류4인경우 변수영향도가 큰칼럼을 작성 하시오 </p>
                     <p><input type="text" placeholder=""><span class="point">💊힌트</span></p>
-                    <p class="hint"><img src="images/11.png" alt=""></p>
+                    <p class="hint">breathes</p>
+                </div>
+
+                <div class="card"><h3>시뮬레이션</h3>
+                    <h3>🧯문제</h3><p> 학습한 딥러닝 모델 분석 결과,주어진 값으로 시뮬레이션을 실행하여 동물의 분류 번호를 작성하시오 </p>
+                    <p>aquatic :0 , backbone :0, breathes : 0, catsize :1, eggs:0, hair:0, milk:1,  tail:1, toothed:1, venomous:0</p>
+                    <p><input type="text" placeholder=""><span class="point">💊힌트</span></p>
+                    <p class="hint">1</p>
                 </div>
 
                
