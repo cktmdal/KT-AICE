@@ -264,109 +264,6 @@
             <div class="card-grid">
                 <div class="card"><h3>문제정의</h3><p> 동물 데이터를 이해하고 동물의 종류를 구분할 수 있다</p></div>
             
-               <div class="card">
-                    <h3>데이터 컬럼명</h3>
-                    <table border="1" style="border-collapse: collapse; width: 100%; text-align: left;">
-  <thead>
-    <tr style="background-color: #f2f2f2;">
-      <th style="padding: 8px;">컬럼명</th>
-      <th style="padding: 8px;">한국어 번역</th>
-      <th style="padding: 8px;">데이터 특성 요약</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td style="padding: 8px;"><code>animal_name</code></td>
-      <td style="padding: 8px;">동물 이름</td>
-      <td style="padding: 8px;">동물의 명칭</td>
-    </tr>
-    <tr>
-      <td style="padding: 8px;"><code>hair</code></td>
-      <td style="padding: 8px;">털 유무</td>
-      <td style="padding: 8px;">털이 있는지 여부 (0/1)</td>
-    </tr>
-    <tr>
-      <td style="padding: 8px;"><code>feathers</code></td>
-      <td style="padding: 8px;">깃털 유무</td>
-      <td style="padding: 8px;">깃털이 있는지 여부 (0/1)</td>
-    </tr>
-    <tr>
-      <td style="padding: 8px;"><code>eggs</code></td>
-      <td style="padding: 8px;">알 유무 (산란 여부)</td>
-      <td style="padding: 8px;">알을 낳는지 여부 (0/1)</td>
-    </tr>
-    <tr>
-      <td style="padding: 8px;"><code>milk</code></td>
-      <td style="padding: 8px;">젖 분비 유무</td>
-      <td style="padding: 8px;">포유류처럼 젖을 먹이는지 여부 (0/1)</td>
-    </tr>
-    <tr>
-      <td style="padding: 8px;"><code>airborne</code></td>
-      <td style="padding: 8px;">비행 가능 여부</td>
-      <td style="padding: 8px;">날 수 있는지 여부 (0/1)</td>
-    </tr>
-    <tr>
-      <td style="padding: 8px;"><code>aquatic</code></td>
-      <td style="padding: 8px;">수생 여부</td>
-      <td style="padding: 8px;">물속에 서식하는지 여부 (0/1)</td>
-    </tr>
-    <tr>
-      <td style="padding: 8px;"><code>predator</code></td>
-      <td style="padding: 8px;">포식자 여부</td>
-      <td style="padding: 8px;">다른 동물을 잡아먹는 포식자인지 여부 (0/1)</td>
-    </tr>
-    <tr>
-      <td style="padding: 8px;"><code>toothed</code></td>
-      <td style="padding: 8px;">이빨 유무</td>
-      <td style="padding: 8px;">이빨이 있는지 여부 (0/1)</td>
-    </tr>
-    <tr>
-      <td style="padding: 8px;"><code>backbone</code></td>
-      <td style="padding: 8px;">척추 유무</td>
-      <td style="padding: 8px;">척추동물에 해당하는지 여부 (0/1)</td>
-    </tr>
-    <tr>
-      <td style="padding: 8px;"><code>breathes</code></td>
-      <td style="padding: 8px;">호흡 여부</td>
-      <td style="padding: 8px;">호흡 기관을 통해 숨을 쉬는지 여부 (0/1)</td>
-    </tr>
-    <tr>
-      <td style="padding: 8px;"><code>venomous</code></td>
-      <td style="padding: 8px;">독성 유무</td>
-      <td style="padding: 8px;">독이 있는지 여부 (0/1)</td>
-    </tr>
-    <tr>
-      <td style="padding: 8px;"><code>fins</code></td>
-      <td style="padding: 8px;">지느러미 유무</td>
-      <td style="padding: 8px;">지느러미가 있는지 여부 (0/1)</td>
-    </tr>
-    <tr>
-      <td style="padding: 8px;"><code>legs</code></td>
-      <td style="padding: 8px;">다리 개수</td>
-      <td style="padding: 8px;">다리의 수 (정수 값)</td>
-    </tr>
-    <tr>
-      <td style="padding: 8px;"><code>tail</code></td>
-      <td style="padding: 8px;">꼬리 유무</td>
-      <td style="padding: 8px;">꼬리가 있는지 여부 (0/1)</td>
-    </tr>
-    <tr>
-      <td style="padding: 8px;"><code>domestic</code></td>
-      <td style="padding: 8px;">가축화 여부</td>
-      <td style="padding: 8px;">길들여진 가축인지 여부 (0/1)</td>
-    </tr>
-    <tr>
-      <td style="padding: 8px;"><code>catsize</code></td>
-      <td style="padding: 8px;">고양이 크기 이상 여부</td>
-      <td style="padding: 8px;">고양이 정도 크기 이상인지 여부 (0/1)</td>
-    </tr>
-    <tr>
-      <td style="padding: 8px;"><code>class_type</code></td>
-      <td style="padding: 8px;">동물 분류 유형 (클래스)</td>
-      <td style="padding: 8px;">예측 대상이 되는 동물 종/분류 그룹</td>
-    </tr>
-  </tbody>
-</table>
         </div>
                
             </div>
@@ -380,17 +277,18 @@
                 <div class="card"><h3>🧯문제</h3><p>종속변수(output 컬럼)란 독립변수(input 컬럼)를 바탕으로 예측하는 대상을 의미한다.
 다음 중 이 과제를 해결하는 데 필요한 종속변수를 고르시 <span class="hide">4</span></p>
                     <ol>
-                        <li><span>1</span>동물 분류(class_type)</li>
-                        <li><span>2</span>다리 수(legs)</li>
-                        <li><span>3</span>동물 이름(animal_name)</li>
-                        <li><span>4</span>알(eggs)</li>
-                        <li><span>5</span>척추(backbone)</li>
+                        <li><span>1</span>동물 분류</li>
+                        <li><span>2</span>다리 수</li>
+                        <li><span>3</span>동물 이름</li>
+                        <li><span>4</span>알</li>
+                        <li><span>5</span>척추</li>
                     </ol>
                   
                 </div>
                      <div class="card"><h3>🧯문제</h3><p>포유류(1), 조류(2), 파충류(3), 어류(4), 양서류(5), 곤충류(6), 기타무척추동물(7)으로 분류 할경우 분류에 영향을 주는 독립변수?</p>
                        <p><input type="text" placeholder="값을 입력 하세요"><span class="point">💊힌트</span></p>
-                           <p class="hint">hair,eggs,milk,aquatic,toothed,backbone,breathes,venomous,tail,catsize</p>
+                         
+                           <p class="hint">독성, 수행, 이빨, 폐호흡, 고양이크기이상, 털, 꼬리, 알, 포유, 척추</p>
                        
                     </div>
                 <div class="card"><h3>🧯문제</h3><p>데이터의 전체 개수(observation)를 작성하시오. </p>
@@ -398,7 +296,7 @@
                    <p class="hint">101</p>
                 </div>
 
-                <div class="card"><h3>🧯문제</h3><p>eggs 의 평균(mean)를 작성하시오. </p>
+                <div class="card"><h3>🧯문제</h3><p>알 의 평균(mean)를 작성하시오. </p>
                    <p><input type="text" placeholder="값을 입력 하세요"><span class="point">💊힌트</span></p>
                    <p class="hint">0.58</p>
                 </div>
@@ -408,7 +306,7 @@
                    <p class="hint">0</p>
                 </div>
 
-                <div class="card"><h3>🧯문제</h3><p>predator의  중앙값(median)을 소수점 둘째 자리까지 작성하시오. </p>
+                <div class="card"><h3>🧯문제</h3><p>포식자  중앙값(median)을 소수점 둘째 자리까지 작성하시오. </p>
                    <p><input type="text" placeholder="값을 입력 하세요"><span class="point">💊힌트</span></p>
                    <p class="hint">1.00</p>
                 </div>
@@ -419,17 +317,17 @@
             <h1>시각화분석</h1>
             <p class="section-desc">데이터 내 누락된 값(NaN)의 분포와 정상 범위를 벗어난 아웃라이어를 찾아냅니다.</p>
             <div class="card-grid">
-                <div class="card"><h3>🧯문제</h3><p>milik의 칼럼에서 가장 관련이 높은 속성은 (  1  )으로 상관관계수는 (   2  ) 으로 확인 할 수 있다 
+                <div class="card"><h3>🧯문제</h3><p>포유 칼럼에서 가장 관련이 높은 속성은 (  1  )으로 상관관계수는 (   2  ) 으로 확인 할 수 있다 
                     [히드맵]  </p>
                     <p><input type="text" placeholder="순서대로 작성 하세요"><span class="point">💊힌트</span></p>
-                      <p class="hint">eggs, 0.939</p>
+                      <p class="hint">알, 0.939</p>
                                                      <!-- eggs, 0.939 -->
                 </div>
 
-                 <div class="card"><h3>🧯문제</h3><p> [히트맵]을 참고하여 airborne 칼럼과 가장 연관성이 높은 칼럼과 상관계수를 작성하시오 </p>
+                 <div class="card"><h3>🧯문제</h3><p> [히트맵]을 참고하여 비행 칼럼과 가장 연관성이 높은 칼럼과 상관계수를 작성하시오 </p>
                  
                     <p><input type="text" placeholder="칼럼명"><span class="point">💊힌트</span></p>
-                   <p class="hint">feathers</p>
+                   <p class="hint">깃털</p>
                 </div>
 
                 
@@ -451,13 +349,13 @@
                 </div>
 
                 <div class="card"><h3>🧯문제</h3><p>[분포차트]동물 분류중 등뼈가 있는 동물 분류 번호와 등뼈가 없는 동물 분류 번호를 확인하여 작성 하시
-               값을 작성하시오 (x 칼럼 - class_type, y 칼럼 - backbone)</p>
+               값을 작성하시오 (x 칼럼 - 분류, y 칼럼 - 척추)</p>
                    <p><input type="text" placeholder=""><span class="point">💊힌트</span></p>
                    <p class="hint">등뼈가 있는 번호 1,2,3,4,5, 등뼈가 없는 번호 5,6</p>
                 </div>
 
                    <div class="card"><h3>🧯문제</h3><p>[박스차트] 동물 분류에서 무척추동물인 동물 뷴류가 7인 박스차트를 보고 q1, q3, 중앙값을 순서대로 작성하시오 
-                       (x 칼럼 - legs, y 칼럼 - class_type)</p>
+                       (x 칼럼 - 다리, y 칼럼 - 분류)</p>
                    <p><input type="text" placeholder=""><span class="point">💊힌트</span></p>
                    <p class="hint">q1 : 0  q3 : 6,  중앙값(median):4.5</p>
                 </div>
@@ -492,7 +390,7 @@
                     <li>종속변수를 제외한 모든 변수의 결측치(missing cells)를 처리하시오.</li>
                     <li>수치형 데이터로 구성된 변수는 중앙값(median)로 대체하시오.</li>
                     <li>범주형 데이터로 구성된 변수는 최빈값(most_frequent)으로 대체하시오.</li>
-                    <li><b>legs는 strategy의 값을  Min-Max-scaler로 변경하여 조정하시오</b></li>
+                    <li><b>다리 는 strategy의 값을  Min-Max-scaler로 변경하여 조정하시오</b></li>
                     <li>수행 후 기존 변수는 삭제하고 [가공 데이터 저장]을 클릭하여 가공된 데이터를 저장하시오.</li>
                </ul>
                       <p><input type="text" placeholder=""><span class="point">💊힌트</span></p>
@@ -537,7 +435,7 @@
                      <li>제외 칼럼:
                         <ul style="list-style-type: circle; padding-left: 20px; margin: 5px 0 0 0;">
                             <li>종속변수와 상관관계가 적은 칼럼을 제외변수로 지정하시오 </li>
-                            <li> animal_name, feathers, airborne ,predator,fins,legs ,legs_MS, domestic는 제외컬럼입니다</li>
+                            <li> 깃털, 가축화, 다리수, 지느러미, 포식자, 비행, 동물 이름 는 제외컬럼입니다</li>
                         </ul>
                     </li>
                     <li>칼럼 Parameter 설정:
@@ -580,7 +478,7 @@
                 <div class="card"><h3>변수영향도 확인</h3>
                     <h3>🧯문제</h3><p> 학습한 딥러닝 모델 분석 결과, 동물분류4인경우 변수영향도가 큰칼럼을 작성 하시오 </p>
                     <p><input type="text" placeholder=""><span class="point">💊힌트</span></p>
-                    <p class="hint">breathes</p>
+                    <p class="hint">폐호흡</p>
                 </div>
 
                 <div class="card"><h3>시뮬레이션</h3>
