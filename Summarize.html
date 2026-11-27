@@ -140,10 +140,13 @@
   <div class="wrap">
     <div class="notice">★ 오른쪽 화면에 있는 시험 <span class="highlight-red font" >지시 문항을 천천히 꼼꼼히 읽고</span> 시험 보기</div>
     <div class="notice">★  <span class="highlight-red">80점 이상 합격 / 시험시간 60분</span></div>
-
+    
+<div class="eval-card classification">
     <h2>1. 종속변수 찾기</h2>
     <p>○○을 예측 하려고 한다 라는 문구가 있으면 예측 하려는 것이 종속 변수 이다</p>
-
+</div
+  >
+<div class="eval-card">
     <h2>2. 결측치 대체 (missing)</h2>
     <table>
       <thead>
@@ -178,7 +181,8 @@
       
       </tbody>
     </table>
-
+</div>
+<div class="eval-card classification">
     <h2>3. 딥러닝 학습</h2>
     <table>
       <thead>
@@ -215,7 +219,8 @@
         </tr>
       </tbody>
     </table>
-
+</div>
+<div class="eval-card">
     <h2>4. output 컬럼</h2>
     <table>
       <thead>
@@ -244,7 +249,8 @@
         </tr>
       </tbody>
     </table>
-
+</div>
+<div class="eval-card classification">
     <h2>5. Input 컬럼</h2>
     <table>
       <tbody>
@@ -254,31 +260,33 @@
         </tr>
       </tbody>
     </table>
-
-    <h2>6. [시각화분석]</h2>
-    <div class="heatmap-box">
-      <img id="heatmapImg" src="images/heatmap.png" alt="상관관계 히트맵" />
+</div>
+    <div class="eval-card">
+        <h2>6. [시각화분석]</h2>
+        <div class="heatmap-box">
+          <img id="heatmapImg" src="images/heatmap.png" alt="상관관계 히트맵" />
+        </div>
+        <p>예) 값이 아닌 변수명을 작성하는 경우가 많음 <span class="highlight-red">(지시사항에 있음)</span></p>
+    
+        <table>
+          <thead>
+            <tr>
+              <th>양의 상관관계(포유)</th>
+              <th>음의 상관관계(포유)</th>
+              <th>가장 강한 상관관계(포유) [절댓값 기준]</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>0.879 (털)</td>
+              <td>-0.939 (알)</td>
+              <td>-0.939 (알)</td>
+            </tr>
+          </tbody>
+        </table>
+    
+        <p>0에 가까울수록 두 변수 사이의 선형 상관관계가 낮다(거의 없다)라고 분석한다.</p>
     </div>
-    <p>예) 값이 아닌 변수명을 작성하는 경우가 많음 <span class="highlight-red">(지시사항에 있음)</span></p>
-
-    <table>
-      <thead>
-        <tr>
-          <th>양의 상관관계(포유)</th>
-          <th>음의 상관관계(포유)</th>
-          <th>가장 강한 상관관계(포유) [절댓값 기준]</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>0.879 (털)</td>
-          <td>-0.939 (알)</td>
-          <td>-0.939 (알)</td>
-        </tr>
-      </tbody>
-    </table>
-
-    <p>0에 가까울수록 두 변수 사이의 선형 상관관계가 낮다(거의 없다)라고 분석한다.</p>
 <div class="eval-card classification">
     <h2>7. 데이터 가공후 저장, 딥러닝 학습후 저장 [꼭! 이름뒤에 숫자또는 영문 넣고 다른 이름 저장]</h2>
 </div>
