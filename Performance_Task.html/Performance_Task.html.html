@@ -504,14 +504,7 @@
             event.currentTarget.classList.add('active');
         }
 
-        document.addEventListener('click', function(event) {
-            if (event.target.classList.contains('point')) {
-                const hintElement = event.target.closest('p').nextElementSibling;
-                if (hintElement && hintElement.classList.contains('hint')) {
-                    hintElement.style.display = hintElement.style.display === 'block' ? 'none' : 'block';
-                }
-            }
-        });
+   );
     </script>
 </body>
 </html>
