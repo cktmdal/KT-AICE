@@ -95,42 +95,43 @@
             display: block;
             animation: fadeIn 0.3s ease-in-out;
         }
+
         .btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 6px;
-  padding: 9px 16px;
-  background-color: #2563eb;
-  color: #ffffff;
-  border: 1px solid #2563eb;
-  border-radius: 6px;
-  font-family: inherit;
-  font-size: 0.9rem;
-  font-weight: 600;
-  line-height: 1.2;
-  cursor: pointer;
-  transition: background-color 0.2s ease, border-color 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease;
-}
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            padding: 9px 16px;
+            background-color: #2563eb;
+            color: #ffffff;
+            border: 1px solid #2563eb;
+            border-radius: 6px;
+            font-family: inherit;
+            font-size: 0.9rem;
+            font-weight: 600;
+            line-height: 1.2;
+            cursor: pointer;
+            transition: background-color 0.2s ease, border-color 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease;
+        }
 
-.btn:hover {
-  background-color: #1d4ed8;
-  border-color: #1d4ed8;
-  transform: translateY(-1px);
-  box-shadow: 0 3px 8px rgba(37, 99, 235, 0.25);
-}
+        .btn:hover {
+            background-color: #1d4ed8;
+            border-color: #1d4ed8;
+            transform: translateY(-1px);
+            box-shadow: 0 3px 8px rgba(37, 99, 235, 0.25);
+        }
 
-.btn:active {
-  background-color: #1e40af;
-  border-color: #1e40af;
-  transform: translateY(0);
-  box-shadow: none;
-}
+        .btn:active {
+            background-color: #1e40af;
+            border-color: #1e40af;
+            transform: translateY(0);
+            box-shadow: none;
+        }
 
-.btn:focus-visible {
-  outline: 2px solid #93c5fd;
-  outline-offset: 2px;
-}
+        .btn:focus-visible {
+            outline: 2px solid #93c5fd;
+            outline-offset: 2px;
+        }
 
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(6px); }
@@ -152,7 +153,6 @@
 
         .card-grid {
             display: grid;
-            /* grid-template-columns: repeat(2, 1fr); */
             gap: 20px;
         }
 
@@ -162,96 +162,102 @@
             border-radius: 8px;
             padding: 24px;
             transition: transform 0.2s, box-shadow 0.2s;
-
         }
 
         .card:hover {
             transform: translateY(-3px);
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-            border-color:orangered
+            border-color: orangered;
         }
 
         .card h3 {
             font-size: 1.5rem;
             color: #1e293b;
             margin-bottom: 8px;
-
         }
 
         .card p {
-            font-size:1.2rem;
+            font-size: 1.2rem;
             color: #272e38;
             line-height: 1.4;
             padding-left: 20px;
         }
-        ol{padding-left: 70px; list-style-type: none; }
-         ol li{line-height: 30px;}
-      ol li span {
-    border: 1px solid #262626;
-    border-radius: 100%;
-    width: 22px;
-    height: 22px;
-    display: inline-flex;       /* inline-block 대신 inline-flex 사용 */
-    align-items: center;        /* 수직 중앙 정렬 */
-    justify-content: center;    /* 수평 중앙 정렬 */
-    margin-right: 5px;
-    font-size: 14px;            /* 원 크기(22px)에 맞게 폰트 크기 조정 (선택 사항) */
-}
-.card .hide{background-color: #0f172a; color:#000}
-.card .hide:hover{color:#fff}
-input{border:1px solid #d9d9d9; height: 50px; width: 350px;  display: inline-block; margin-top:10px; padding-left: 10px; }
-    
-    /* 1. 힌트 기본 영역을 숨기고, .point 글자에 손가락 커서 추가 */
-    .hint { display: none; margin-top: 10px; }
-    .point { cursor: pointer; color: #3b82f6; margin-left: 10px; font-weight: bold; }
-    
-    textarea{width: 80%; height: 100px; overflow: auto;}
 
-.model-guide-wrapper {
-    margin-top: 20px;
-    display: flex;
-    flex-direction: column;
-    gap: 14px;
-    overflow-x: auto;
-  }
+        .card .hide {
+            background-color: #0f172a;
+            color: #000;
+        }
 
-  .model-guide-table {
-    width: 100%;
-    min-width: 520px;
-    border-collapse: collapse;
-    background-color: #ffffff;
-    font-size: 0.95rem;
-    color: #1e293b;
-  }
+        .card .hide:hover {
+            color: #fff;
+        }
 
-  .model-guide-table th,
-  .model-guide-table td {
-    border: 1px solid #334155;
-    padding: 10px 14px;
-    text-align: center;
-    vertical-align: middle;
-  }
+        input {
+            border: 1px solid #d9d9d9;
+            height: 50px;
+            width: 350px;
+            display: inline-block;
+            margin-top: 10px;
+            padding-left: 10px;
+        }
 
-  .model-guide-table thead th {
-    background-color: #f8fafc;
-    font-weight: 700;
-    color: #0f172a;
-  }
+        .hint {
+            display: none;
+            margin-top: 10px;
+        }
 
-  .model-guide-table tbody tr:hover {
-    background-color: #f1f5f9;
-  }
+        .point {
+            cursor: pointer;
+            color: #3b82f6;
+            margin-left: 10px;
+            font-weight: bold;
+        }
 
-  .model-guide-table td:first-child {
-    font-weight: 600;
-    background-color: #fcfcfd;
-  }
+        .model-guide-wrapper {
+            margin-top: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+            overflow-x: auto;
+        }
 
-  .sub-note {
-    font-size: 0.85rem;
-    color: #475569;
-    font-weight: 400;
-  }
+        .model-guide-table {
+            width: 100%;
+            min-width: 520px;
+            border-collapse: collapse;
+            background-color: #ffffff;
+            font-size: 0.95rem;
+            color: #1e293b;
+        }
+
+        .model-guide-table th,
+        .model-guide-table td {
+            border: 1px solid #334155;
+            padding: 10px 14px;
+            text-align: center;
+            vertical-align: middle;
+        }
+
+        .model-guide-table thead th {
+            background-color: #f8fafc;
+            font-weight: 700;
+            color: #0f172a;
+        }
+
+        .model-guide-table tbody tr:hover {
+            background-color: #f1f5f9;
+        }
+
+        .model-guide-table td:first-child {
+            font-weight: 600;
+            background-color: #fcfcfd;
+        }
+
+        .sub-note {
+            font-size: 0.85rem;
+            color: #475569;
+            font-weight: 400;
+        }
     </style>
 </head>
 <body>
@@ -260,400 +266,249 @@ input{border:1px solid #d9d9d9; height: 50px; width: 350px;  display: inline-blo
     <aside>
         <div class="logo-area">AI & Data Platform</div>
         <div class="menu-container">
-             <div class="menu-category">
-                <div class="menu-title">수행평가 데이터 다운로드 </div>
+            <div class="menu-category">
+                <div class="menu-title">수행평가 데이터 다운로드</div>
                 <ul class="submenu-list">
                     <li class="submenu-item"><a href="#import-file" class="active" onclick="switchSection('import-file', event)">데이터 다운로드</a></li>
-                   
                 </ul>
             </div>
-          
 
-            <!-- 2. 데이터 분석 -->
             <div class="menu-category">
-                <div class="menu-title"> 데이터 분석</div>
+                <div class="menu-title">데이터 분석</div>
                 <ul class="submenu-list">
                     <li class="submenu-item"><a href="#analysis-summary" onclick="switchSection('analysis-summary', event)">기초정보분석</a></li>
                     <li class="submenu-item"><a href="#analysis-missing" onclick="switchSection('analysis-missing', event)">시각화분석</a></li>
-                  
                 </ul>
             </div>
 
-            <!-- 3. 데이터 가공 -->
             <div class="menu-category">
                 <div class="menu-title">3. 데이터 가공</div>
                 <ul class="submenu-list">
                     <li class="submenu-item"><a href="#process-clean" onclick="switchSection('process-clean', event)">데이터가공</a></li>
-                              
                 </ul>
             </div>
 
-            <!-- 4. AI 모델 학습 -->
             <div class="menu-category">
                 <div class="menu-title">4. AI 모델 학습</div>
                 <ul class="submenu-list">
-                 
-                    <li class="submenu-item"><a href="#train-hyper" onclick="switchSection('train-hyper', event)">딥러닝학습</a></li>  
-
+                    <li class="submenu-item"><a href="#train-hyper" onclick="switchSection('train-hyper', event)">딥러닝학습</a></li>
                 </ul>
             </div>
 
-            <!-- 5. AI 모델 활용 -->
             <div class="menu-category">
                 <div class="menu-title">5. AI 모델 활용</div>
                 <ul class="submenu-list">
                     <li class="submenu-item"><a href="#use-predict" onclick="switchSection('use-predict', event)">AI 모델 활용</a></li>
-          
                 </ul>
             </div>
-
         </div>
     </aside>
 
     <!-- 오른쪽 SECTION 영역 -->
     <main>
-        <!-- 1. 데이터 가져오기 섹션들 -->
+        <!-- 1. 데이터 다운로드 섹션 -->
         <section id="import-file" class="content-section active">
             <h1>파일 업로드 (CSV/Excel)</h1>
-          <p class="section-desc">로컬 저장소에 있는 CSV, Excel, JSON 등의 정형 데이터 파일을 업로드.</p>
-<!-- [추가] 선생님 전용 파일 업로드 및 학생 다운로드 영역 -->
-<div style="margin-top: 30px; padding: 20px; background-color: #f8fafc; border: 1px dashed #cbd5e1; border-radius: 8px;">
-    <h5 style="margin-bottom: 10px; color: #1e293b;">📎 학습 자료 및 실습 파일 관리</h5>
-    <p style="font-size: 0.9rem; color: #64748b; margin-bottom: 15px;">과목별 학습 자료 CSV 파일을 다운로드 받으세요</p>
+            <p class="section-desc">로컬 저장소에 있는 CSV, Excel, JSON 등의 정형 데이터 파일을 업로드.</p>
 
-  
+            <div style="margin-top: 30px; padding: 20px; background-color: #f8fafc; border: 1px dashed #cbd5e1; border-radius: 8px;">
+                <h5 style="margin-bottom: 10px; color: #1e293b;">📎 학습 자료 및 실습 파일 관리</h5>
+                <p style="font-size: 0.9rem; color: #64748b; margin-bottom: 15px;">과목별 학습 자료 CSV 파일을 다운로드 받으세요</p>
 
-    <!-- 과목별 다운로드 버튼 5개 -->
-    <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 15px;">
-        <button type="button" class="btn" onclick="downloadSubjectCsv('korean')">국어 데이터 다운로드</button>
-        <button type="button" class="btn" onclick="downloadSubjectCsv('english')">영어 데이터 다운로드</button>
-        <button type="button" class="btn" onclick="downloadSubjectCsv('math')">수학 데이터 다운로드</button>
-        <button type="button" class="btn" onclick="downloadSubjectCsv('science')">과학 데이터 다운로드</button>
-        <button type="button" class="btn" onclick="downloadSubjectCsv('informatics')">정보 데이터 다운로드</button>
-    </div>
-
-    <!-- 파일 업로드 입력창 (기본 숨김) -->
-  
-
-    <!-- 업로드된 파일 목록 및 다운로드 링크 표시 영역 -->
-    <div id="file-download-container" style="margin-top: 10px;">
-        <span style="font-size: 0.85rem; color: #94a3b8;">등록된 파일이 없습니다.</span>
-    </div>
-</div>
-
-<script>
-    const subjectFiles = {
-        korean: { path: '../data/korean_data.csv', filename: 'korean_data.csv' },
-        english: { path: '../data/english_data.csv', filename: 'english_data.csv' },
-        math: { path: '../data/math_data.csv', filename: 'math_data.csv' },
-        science: { path: '../data/science_data.csv', filename: 'science_data.csv' },
-        informatics: { path: '../data/Social_data.csv', filename: 'Social_data.csv' }
-    };
-
-    function downloadSubjectCsv(subjectKey) {
-        const fileInfo = subjectFiles[subjectKey];
-        if (!fileInfo) return;
-
-        const link = document.createElement('a');
-        link.href = fileInfo.path;
-        link.download = fileInfo.filename;
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
-    }
-</script>
-              
-
-              
-      
-
-           
+                <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 15px;">
+                    <button type="button" class="btn" onclick="downloadSubjectCsv('korean')">국어 데이터 다운로드</button>
+                    <button type="button" class="btn" onclick="downloadSubjectCsv('english')">영어 데이터 다운로드</button>
+                    <button type="button" class="btn" onclick="downloadSubjectCsv('math')">수학 데이터 다운로드</button>
+                    <button type="button" class="btn" onclick="downloadSubjectCsv('science')">과학 데이터 다운로드</button>
+                    <button type="button" class="btn" onclick="downloadSubjectCsv('informatics')">정보 데이터 다운로드</button>
+                </div>
+            </div>
         </section>
 
-
-
-        <!-- 2. 데이터 분석 섹션들 -->
+        <!-- 2. 기초정보 분석 섹션 -->
         <section id="analysis-summary" class="content-section">
             <h1>기초정보 분석</h1>
             <div class="card-grid">
-                   <div>
-                       <h2>문제정의</h2>
-                       <p>주어진 데이터는 학생들의 인적 사항(학번, 이름), 생활 시간(공부시간, 수면시간, 촬영시간, 학원시간), 그리고 점수로 구성되어 있습니다. 학생들의 생활 시간을 분석하면 점수를 예측할 수 있습니다.
-                              제시된 문항을 읽고 ① 기초 데이터 분석과 ② 데이터 전처리(가공)를 수행한 뒤, ③ 딥러닝 학습을 통해 생활 시간(독립변수)에 따른 예상 점수를 예측·확인할 수 있는 결과 데이터를 완성하시오.</p>
-                   </div>
-                  <div class="card"><h3>🧯 제시된 데이터에서 예측 대상인 종속변수를 고르고,해당 과제의 데이터 분석 유형(회귀 / 분류)를 중 어떤 유형인지 작성하시오?</h3>
-                    <p class="hide"> 종속변수 : 사회 , 데이터 유형 : 회귀</p></div>
-
-            </div>
-                <div class="card"><h3>🧯문제</h3><p>공부시간의 중앙값(Median), 촬영시간의 결측치(Missing) 개수, 점수의 최빈값 중 점수가 가장 큰 값 작성하시오.</p>
-                   <p><input type="text" placeholder="값을 입력 하세요"><span class="point">💊힌트</span></p>
-                      <p class="hint">공부시간의 중앙값(Median):     촬영시간의 결측치(Missing) 개수:    , 점수의 최빈값</p>
+                <div>
+                    <h2>문제정의</h2>
+                    <p>주어진 데이터는 학생들의 인적 사항(학번, 이름), 생활 시간(공부시간, 수면시간, 촬영시간, 학원시간), 그리고 점수로 구성되어 있습니다. 학생들의 생활 시간을 분석하면 점수를 예측할 수 있습니다.
+                        제시된 문항을 읽고 ① 기초 데이터 분석과 ② 데이터 전처리(가공)를 수행한 뒤, ③ 딥러닝 학습을 통해 생활 시간(독립변수)에 따른 예상 점수를 예측·확인할 수 있는 결과 데이터를 완성하시오.</p>
                 </div>
+                <div class="card">
+                    <h3>🧯 제시된 데이터에서 예측 대상인 종속변수를 고르고, 해당 과제의 데이터 분석 유형(회귀 / 분류) 중 어떤 유형인지 작성하시오?</h3>
+                    <p class="hide">종속변수 : 사회 , 데이터 유형 : 회귀</p>
+                </div>
+                <div class="card">
+                    <h3>🧯문제</h3>
+                    <p>공부시간의 중앙값(Median), 촬영시간의 결측치(Missing) 개수, 점수의 최빈값 중 점수가 가장 큰 값 작성하시오.</p>
+                    <p><input type="text" placeholder="값을 입력 하세요"><span class="point">💊힌트</span></p>
+                    <p class="hint">공부시간의 중앙값(Median): 촬영시간의 결측치(Missing) 개수: , 점수의 최빈값</p>
+                </div>
+            </div>
         </section>
 
+        <!-- 시각화 분석 섹션 -->
         <section id="analysis-missing" class="content-section">
             <h1>시각화분석</h1>
-   
             <div class="card-grid">
-
-         
-                <div class="card"><h3>🧯문제</h3><p>[히트맵]에서 양의 상관관계가 가장 높은 값과 두 개의 변수를 작성하시오(</p>
-                   <p><input type="text" placeholder="양의 상관관계"><span class="point">💊힌트</span></p>
-                   <p class="hint"> </p>
+                <div class="card">
+                    <h3>🧯문제</h3>
+                    <p>[히트맵]에서 양의 상관관계가 가장 높은 값과 두 개의 변수를 작성하시오</p>
+                    <p><input type="text" placeholder="양의 상관관계"><span class="point">💊힌트</span></p>
+                    <p class="hint"></p>
                 </div>
-                 <div class="card"><h3>🧯문제</h3><p>[박스차트]에서 공부시간이 8인 데이터의 max, median, min 값을 순서대로 작성하시오<br>
-                 Y 컬럼선택 – 점수, X 컬럼선택 – 공부시간 , Hue 컬럼선택 - 공부시간</p>
-                   <p><input type="text" placeholder=""><span class="point">💊힌트</span></p>
-                   <p class="hint"></p>
+                <div class="card">
+                    <h3>🧯문제</h3>
+                    <p>[박스차트]에서 공부시간이 8인 데이터의 max, median, min 값을 순서대로 작성하시오<br>
+                        Y 컬럼선택 – 점수, X 컬럼선택 – 공부시간 , Hue 컬럼선택 - 공부시간</p>
+                    <p><input type="text" placeholder=""><span class="point">💊힌트</span></p>
+                    <p class="hint"></p>
                 </div>
-                
-            
-                 <div class="card"><h3>🧯문제</h3><p>[분포차트]에서 촬영시간이 5시간인 데이터 중 점수가 가장 높은 범위와 해당 데이터의 count(개수)를 작성하시오.
-                     <br> X 컬럼 선택 – 점수,  Hue 컬럼선택  -  촬영시간 </p>
-                   <p><input type="text" placeholder=""><span class="point">💊힌트</span></p>
-                   <p class="hint"></p>
+                <div class="card">
+                    <h3>🧯문제</h3>
+                    <p>[분포차트]에서 촬영시간이 5시간인 데이터 중 점수가 가장 높은 범위와 해당 데이터의 count(개수)를 작성하시오.<br>
+                        X 컬럼 선택 – 점수, Hue 컬럼선택 - 촬영시간</p>
+                    <p><input type="text" placeholder=""><span class="point">💊힌트</span></p>
+                    <p class="hint"></p>
                 </div>
-
-
-
             </div>
         </section>
 
-        
-
-       
-
-
-        <!-- 3. 데이터 가공 섹션들 -->
+        <!-- 3. 데이터 가공 섹션 -->
         <section id="process-clean" class="content-section">
             <h1>데이터 가공</h1>
             <p class="section-desc">결측치와 중복 데이터를 처리하고 정돈된 형태로 정제합니다.</p>
             <div class="card-grid">
-                <div class="card"><h3>데이터 가공</h3><p><img src="images/24.png" alt=""></p>
-               <p>📌공부시간, 수면시간, 학원시간, 촬영시간의 결측치를 대체한 뒤 저장하시오. 원본 데이터는 삭제해도 되지만, 전처리로 생성된 _IM 파일은 삭제하지 마시오.<br>
-              수치 데이터는 중앙값()으로 대체하고 문자(객체)데이터는  최빈값으로 대체합니다</p>
+                <div class="card">
+                    <h3>데이터 가공</h3>
+                    <p><img src="images/24.png" alt="데이터 가공 화면"></p>
+                    <p>📌공부시간, 수면시간, 학원시간, 촬영시간의 결측치를 대체한 뒤 저장하시오. 원본 데이터는 삭제해도 되지만, 전처리로 생성된 _IM 파일은 삭제하지 마시오.<br>
+                        수치 데이터는 중앙값()으로 대체하고 문자(객체)데이터는 최빈값으로 대체합니다</p>
                 </div>
-            
-        </section>
-
-
-
-        <!-- 4. AI 모델 학습 섹션들 -->
-        <section id="train-select" class="content-section">
-            <h1>머신러닝 학습</h1>
-            <!-- <p class="section-desc">풀고자 하는 문제(회귀, 분류, 군집 등)에 적합한 머신러닝/딥러닝 모델을 선택합니다.</p>
-            <div class="card-grid">
-                <div class="card"><h3>분류 모델</h3><p>랜덤 포레스트, 로지스틱 회귀, XGBoost, 서포트 벡터 머신 등</p></div>
-                <div class="card"><h3>회귀 모델</h3><p>선형 회귀, 릿지/라쏘, 결정 트리 회귀 등</p></div>
-            </div> -->
-        </section>
-
-        <section id="train-hyper" class="content-section">
-            <h1>딥러닝 학습</h1>
-            <p class="section-desc">모델의 학습 성능에 영향을 주는 세부 파라미터 값(학습률, 트리 깊이 등)을 지정합니다.</p>
-           
-            <div class="card-grid">
-                 <div class="card"><h3>딥러닝 학습</h3><p><img src="images/29(GPA설정).png" alt=""></p>
-                 <p class="section-desc">
-                     📌 output 칼럼, 제외컬럼을 작성하고  FC레이어수 2, FC레이어크기 20, Epochs 20으로 설정. 나머지값은 기본값으로 설정하고 학습한다. <br>
-                    </p>
-                     <div class="model-guide-wrapper">
-  <!-- 상단: output 컬럼 기준 표 -->
-  <table class="model-guide-table" aria-label="출력 컬럼 기준 회귀 및 분류 설정표">
-    <thead>
-      <tr>
-        <th>ouptup컬럼</th>
-        <th>회 귀</th>
-        <th>분 류</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>데이터유형</td>
-        <td>Numerical</td>
-        <td>Category</td>
-      </tr>
-      <tr>
-        <td>디코더선택</td>
-        <td>regressor</td>
-        <td>classifier</td>
-      </tr>
-      <tr>
-        <td>활성화함수</td>
-        <td>linear</td>
-        <td>softmax , sigmoid<span class="sub-note">(이진분류)</span></td>
-      </tr>
-    </tbody>
-  </table>
-
-  <!-- 하단: Input 컬럼 행 표 -->
-  <table class="model-guide-table" aria-label="입력 컬럼 설정표">
-    <tbody>
-      <tr>
-        <td>Input 컬럼</td>
-        <td>object</td>
-        <td>sparse</td>
-      </tr>
-    </tbody>
-  </table>
-</div>
-
-    <p>(학습결과도 같이 나와야 합니다. r2 결정계수, mean_squared_error 평균제곱오차 ,  mean_absolute_error평균절대오차 포함) </p>                 
-                </div>
-
-          
-                
-
             </div>
         </section>
 
-   
+        <!-- 4. AI 모델 학습 섹션 -->
+        <section id="train-hyper" class="content-section">
+            <h1>딥러닝 학습</h1>
+            <p class="section-desc">모델의 학습 성능에 영향을 주는 세부 파라미터 값(학습률, 트리 깊이 등)을 지정합니다.</p>
+            <div class="card-grid">
+                <div class="card">
+                    <h3>딥러닝 학습</h3>
+                    <p><img src="images/29(GPA설정).png" alt="딥러닝 설정 화면"></p>
+                    <p class="section-desc">
+                        📌 output 칼럼, 제외컬럼을 작성하고 FC레이어수 2, FC레이어크기 20, Epochs 20으로 설정. 나머지값은 기본값으로 설정하고 학습한다.
+                    </p>
+                    <div class="model-guide-wrapper">
+                        <table class="model-guide-table" aria-label="출력 컬럼 기준 회귀 및 분류 설정표">
+                            <thead>
+                                <tr>
+                                    <th>ouptup컬럼</th>
+                                    <th>회 귀</th>
+                                    <th>분 류</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>데이터유형</td>
+                                    <td>Numerical</td>
+                                    <td>Category</td>
+                                </tr>
+                                <tr>
+                                    <td>디코더선택</td>
+                                    <td>regressor</td>
+                                    <td>classifier</td>
+                                </tr>
+                                <tr>
+                                    <td>활성화함수</td>
+                                    <td>linear</td>
+                                    <td>softmax , sigmoid<span class="sub-note">(이진분류)</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
 
-        <!-- 5. AI 모델 활용 섹션들 -->
+                        <table class="model-guide-table" aria-label="입력 컬럼 설정표">
+                            <tbody>
+                                <tr>
+                                    <td>Input 컬럼</td>
+                                    <td>object</td>
+                                    <td>sparse</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <p>(학습결과도 같이 나와야 합니다. r2 결정계수, mean_squared_error 평균제곱오차 , mean_absolute_error평균절대오차 포함)</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. AI 모델 활용 섹션 -->
         <section id="use-predict" class="content-section">
             <h1>AI 모델 활용</h1>
             <p class="section-desc">새로운 대량의 데이터셋을 모델에 입력하여 일괄적인 예측 결과 값을 도출합니다.</p>
             <div class="card-grid">
-            
-                
-                    <h3>🧯문제</h3><p>출력변수 점수에 변수영향도가 가장  큰 변수를 작성하시오  </p>
-                  <p><input type="text" placeholder=""><span class="point">💊힌트</span></p>
-                   <p class="hint"></p>
+                <div class="card">
+                    <h3>🧯문제</h3>
+                    <p>출력변수 점수에 변수영향도가 가장 큰 변수를 작성하시오</p>
+                    <p><input type="text" placeholder=""><span class="point">💊힌트</span></p>
+                    <p class="hint"></p>
                 </div>
-
-              
-                
-                <h3>🧯문제</h3><p> [시뮬레이션]에서 공부시간 5, 수면시간 5, 촬영시간 3, 학원시간 1 시간을 입력하고 모델활용 결과 점수를 작성하시오<br> </p>
-                  <p><input type="text" placeholder=""><span class="point">💊힌트</span></p>
-                   <p class="hint"></p>
-                
+                <div class="card">
+                    <h3>🧯문제</h3>
+                    <p>[시뮬레이션]에서 공부시간 5, 수면시간 5, 촬영시간 3, 학원시간 1 시간을 입력하고 모델활용 결과 점수를 작성하시오</p>
+                    <p><input type="text" placeholder=""><span class="point">💊힌트</span></p>
+                    <p class="hint"></p>
                 </div>
-
-
             </div>
         </section>
-
-       
     </main>
 
-    <!-- 메뉴 클릭 시 오른쪽 섹션을 전환하는 자바스크립트 -->
-  <!-- 메뉴 클릭 시 오른쪽 섹션을 전환하는 자바스크립트 -->
     <script>
-       function switchSection(targetId, event) {
+        const subjectFiles = {
+            korean: { path: '../data/korean_data.csv', filename: 'korean_data.csv' },
+            english: { path: '../data/english_data.csv', filename: 'english_data.csv' },
+            math: { path: '../data/math_data.csv', filename: 'math_data.csv' },
+            science: { path: '../data/science_data.csv', filename: 'science_data.csv' },
+            informatics: { path: '../data/informatics_data.csv', filename: 'informatics_data.csv' }
+        };
+
+        function downloadSubjectCsv(subjectKey) {
+            const fileInfo = subjectFiles[subjectKey];
+            if (!fileInfo) return;
+
+            const link = document.createElement('a');
+            link.href = fileInfo.path;
+            link.download = fileInfo.filename;
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+
+        function switchSection(targetId, event) {
             event.preventDefault();
 
-            // 모든 섹션 비활성화
             const sections = document.querySelectorAll('.content-section');
             sections.forEach(sec => sec.classList.remove('active'));
 
-            // 선택한 섹션 활성화
             const targetSection = document.getElementById(targetId);
             if (targetSection) {
                 targetSection.classList.add('active');
             }
 
-            // 모든 하위메뉴 active 클래스 제거
             const links = document.querySelectorAll('.submenu-item a');
             links.forEach(link => link.classList.remove('active'));
 
-            // 클릭한 메뉴에 active 클래스 부여
             event.currentTarget.classList.add('active');
         }
 
-        // 2. 💊힌트(.point)를 클릭하면 바로 아래의 힌트(.hint)가 토글되도록 처리
         document.addEventListener('click', function(event) {
             if (event.target.classList.contains('point')) {
-                // .point 바로 다음에 오는 .hint 요소를 찾음
                 const hintElement = event.target.closest('p').nextElementSibling;
                 if (hintElement && hintElement.classList.contains('hint')) {
-                    // 현재 상태에 따라 보이기/숨기기 전환
-                    if (hintElement.style.display === 'block') {
-                        hintElement.style.display = 'none';
-                    } else {
-                        hintElement.style.display = 'block';
-                    }
+                    hintElement.style.display = hintElement.style.display === 'block' ? 'none' : 'block';
                 }
             }
         });
-
-        // 페이지가 로드될 때 저장된 파일 불러오기
-        window.addEventListener('DOMContentLoaded', () => {
-            loadSavedFile();
-        });
-
-        // 선생님 인증 함수 (간이 비밀번호 방식)
-        function teacherLogin() {
-            const password = prompt("선생님 비밀번호를 입력하세요:");
-            if (password === "cktmdal8589!") {
-                document.getElementById('teacher-auth-box').style.display = 'none';
-                document.getElementById('upload-box').style.display = 'block';
-                alert("교사 모드가 활성화되었습니다. 파일을 업로드할 수 있습니다.");
-            } else if (password !== null) {
-                alert("비밀번호가 틀렸습니다.");
-            }
-        }
-
-        // 교사 모드 잠금
-        function teacherLogout() {
-            document.getElementById('teacher-auth-box').style.display = 'block';
-            document.getElementById('upload-box').style.display = 'none';
-        }
-
-        // 파일 업로드 처리 및 localStorage 영구 저장
-        function handleFileUpload(event) {
-            const file = event.target.files[0];
-            if (!file) return;
-
-            const reader = new FileReader();
-            reader.onload = function(e) {
-                const base64Data = e.target.result;
-                const fileInfo = {
-                    name: file.name,
-                    size: file.size,
-                    data: base64Data
-                };
-
-                // 브라우저 저장소에 영구 저장 (새로고침 유지)
-                localStorage.setItem('saved_gpa_file', JSON.stringify(fileInfo));
-                renderFileUI(fileInfo);
-                alert('파일이 업로드되었으며 새로고침 시에도 유지됩니다!');
-            };
-            reader.readAsDataURL(file);
-        }
-
-        // 저장된 파일 불러오기
-        function loadSavedFile() {
-            const savedData = localStorage.getItem('saved_gpa_file');
-            if (savedData) {
-                const fileInfo = JSON.parse(savedData);
-                renderFileUI(fileInfo);
-            }
-        }
-
-        // 화면에 다운로드 UI 렌더링
-        function renderFileUI(fileInfo) {
-            const container = document.getElementById('file-download-container');
-            container.innerHTML = `
-                <div style="display: flex; align-items: center; justify-content: space-between; background: #ffffff; padding: 10px 15px; border: 1px solid #cbd5e1; border-radius: 6px;">
-                    <div>
-                        <strong style="font-size: 0.9rem; color: #1e293b;">📄 ${fileInfo.name}</strong>
-                        <span style="font-size: 0.8rem; color: #64748b; margin-left: 10px;">(${(fileInfo.size / 1024).toFixed(1)} KB)</span>
-                    </div>
-                    <div>
-                        <a href="${fileInfo.data}" download="${fileInfo.name}" style="background-color: #2563eb; color: white; padding: 6px 14px; font-size: 0.85rem; border-radius: 4px; text-decoration: none; font-weight: 600; margin-right: 8px;">다운로드</a>
-                    </div>
-                </div>
-            `;
-        }
-
-        // 파일 삭제 함수
-        function deleteFile() {
-            if (confirm("정말 파일을 삭제하시겠습니까?")) {
-                localStorage.removeItem('saved_gpa_file');
-                document.getElementById('file-download-container').innerHTML = '<span style="font-size: 0.85rem; color: #94a3b8;">등록된 파일이 없습니다.</span>';
-            }
-        }
     </script>
 </body>
 </html>
-
