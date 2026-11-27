@@ -261,29 +261,20 @@ input{border:1px solid #d9d9d9; height: 50px; width: 350px;  display: inline-blo
         <div class="logo-area">AI & Data Platform</div>
         <div class="menu-container">
              <div class="menu-category">
-                <div class="menu-title">수행평가 데이터 </div>
+                <div class="menu-title">수행평가 데이터 다운로드 </div>
                 <ul class="submenu-list">
                     <li class="submenu-item"><a href="#import-file" class="active" onclick="switchSection('import-file', event)">데이터 다운로드</a></li>
                    
                 </ul>
             </div>
-            <!-- 1. 데이터 가져오기 -->
-            <div class="menu-category">
-                <div class="menu-title">1. 데이터 가져오기</div>
-                <ul class="submenu-list">
-                    <li class="submenu-item"><a href="#import-db" class="active" onclick="switchSection('import-file', event)">문제정의</a></li>
-                    <li class="submenu-item"><a href="#import-file" onclick="switchSection('import-db', event)">테이터가져오기</a></li>
-                </ul>
-            </div>
+          
 
             <!-- 2. 데이터 분석 -->
             <div class="menu-category">
-                <div class="menu-title">2. 데이터 분석</div>
+                <div class="menu-title"> 데이터 분석</div>
                 <ul class="submenu-list">
                     <li class="submenu-item"><a href="#analysis-summary" onclick="switchSection('analysis-summary', event)">기초정보분석</a></li>
                     <li class="submenu-item"><a href="#analysis-missing" onclick="switchSection('analysis-missing', event)">시각화분석</a></li>
-                  
-                    <li class="submenu-item"><a href="#analysis-vis" onclick="switchSection('analysis-vis', event)">데이터샘플보기</a></li>
                   
                 </ul>
             </div>
@@ -379,22 +370,17 @@ input{border:1px solid #d9d9d9; height: 50px; width: 350px;  display: inline-blo
            
         </section>
 
-        <section id="import-db" class="content-section">
-            <h1>데이터 가져오기</h1>
-            <p class="section-desc">분석 데이터 문제정의와 가져오기</p>
-            <div class="card-grid">
-            
-              
-                <p class="card_p">🍄데이터가 한글인경우 업로드시 오류의 원인이 될수 있습니다. 인코딩을 CP494(한글)로 변경!!</p>
-                </div>
-              
-        </section>
+
 
         <!-- 2. 데이터 분석 섹션들 -->
         <section id="analysis-summary" class="content-section">
             <h1>기초정보 분석</h1>
             <div class="card-grid">
-             
+                   <div>
+                       <h2>문제정의</h2>
+                       <p>주어진 데이터는 학생들의 인적 사항(학번, 이름), 생활 시간(공부시간, 수면시간, 촬영시간, 학원시간), 그리고 점수로 구성되어 있습니다. 학생들의 생활 시간을 분석하면 점수를 예측할 수 있습니다.
+                              제시된 문항을 읽고 ① 기초 데이터 분석과 ② 데이터 전처리(가공)를 수행한 뒤, ③ 딥러닝 학습을 통해 생활 시간(독립변수)에 따른 예상 점수를 예측·확인할 수 있는 결과 데이터를 완성하시오.</p>
+                   </div>
                   <div class="card"><h3>🧯 제시된 데이터에서 예측 대상인 종속변수를 고르고,해당 과제의 데이터 분석 유형(회귀 / 분류)를 중 어떤 유형인지 작성하시오?</h3>
                     <p class="hide"> 종속변수 : 사회 , 데이터 유형 : 회귀</p></div>
 
