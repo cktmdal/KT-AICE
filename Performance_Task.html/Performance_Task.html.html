@@ -467,45 +467,48 @@
         </section>
     </main>
 
-    <script>
-        const subjectFiles = {
-            korean: { path: '../data/korean_data.csv', filename: 'korean_data.csv' },
-            english: { path: '../data/english_data.csv', filename: 'english_data.csv' },
-            math: { path: '../data/math_data.csv', filename: 'math_data.csv' },
-            science: { path: '../data/science_data.csv', filename: 'science_data.csv' },
-            informatics: { path: '../data/informatics_data.csv', filename: 'informatics_data.csv' }
-        };
+   <script>
+    const subjectFiles = {
+        korean: { path: '../data/korean_data.csv', filename: 'korean_data.csv' },
+        english: { path: '../data/english_data.csv', filename: 'english_data.csv' },
+        math: { path: '../data/math_data.csv', filename: 'math_data.csv' },
+        science: { path: '../data/science_data.csv', filename: 'science_data.csv' },
+        informatics: { path: '../data/informatics_data.csv', filename: 'informatics_data.csv' }
+    };
 
-        function downloadSubjectCsv(subjectKey) {
-            const fileInfo = subjectFiles[subjectKey];
-            if (!fileInfo) return;
+    function downloadSubjectCsv(subjectKey) {
+        const fileInfo = subjectFiles[subjectKey];
+        if (!fileInfo) return;
 
-            const link = document.createElement('a');
-            link.href = fileInfo.path;
-            link.download = fileInfo.filename;
-            document.body.appendChild(link);
-            link.click();
-            document.body.removeChild(link);
-        }
+        const link = document.createElement('a');
+        link.href = fileInfo.path;
+        link.download = fileInfo.filename;
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+    }
 
-        function switchSection(targetId, event) {
+    function switchSection(targetId, event) {
+        if (event) {
             event.preventDefault();
-
-            const sections = document.querySelectorAll('.content-section');
-            sections.forEach(sec => sec.classList.remove('active'));
-
-            const targetSection = document.getElementById(targetId);
-            if (targetSection) {
-                targetSection.classList.add('active');
-            }
-
-            const links = document.querySelectorAll('.submenu-item a');
-            links.forEach(link => link.classList.remove('active'));
-
-            event.currentTarget.classList.add('active');
         }
 
-   );
-    </script>
+        const sections = document.querySelectorAll('.content-section');
+        sections.forEach(sec => sec.classList.remove('active'));
+
+        const targetSection = document.getElementById(targetId);
+        if (targetSection) {
+            targetSection.classList.add('active');
+        }
+
+        const links = document.querySelectorAll('.submenu-item a');
+        links.forEach(link => link.classList.remove('active'));
+
+        const clickedLink = event ? event.target.closest('a') : null;
+        if (clickedLink) {
+            clickedLink.classList.add('active');
+        }
+    }
+</script>
 </body>
 </html>
