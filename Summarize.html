@@ -3,607 +3,296 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>KT AICE 주니어 시험 직전 정리</title>
+  <title>KT AICE 주니어 정리</title>
   <style>
-    :root {
-      --bg: #f4f7fb;
-      --surface: #ffffff;
-      --surface-soft: #eef3f9;
-      --text: #182230;
-      --muted: #5b687a;
-      --primary: #1d4ed8;
-      --primary-light: #dbeafe;
-      --accent: #0f766e;
-      --accent-light: #ccfbf1;
-      --warn: #b45309;
-      --warn-light: #fef3c7;
-      --border: #dce4ef;
-      --radius: 14px;
-      --shadow: 0 8px 24px rgba(24, 34, 48, 0.06);
-    }
-
     * {
       box-sizing: border-box;
     }
 
     body {
       margin: 0;
-      font-family: "Pretendard", "Malgun Gothic", -apple-system, BlinkMacSystemFont, sans-serif;
-      background: var(--bg);
-      color: var(--text);
+      padding: 24px;
+      font-family: "Malgun Gothic", "Apple SD Gothic Neo", sans-serif;
+      background: #f5f7fa;
+      color: #111827;
       line-height: 1.6;
     }
 
-    header {
-      background: linear-gradient(135deg, #1e3a8a, #1d4ed8 55%, #0284c7);
-      color: #fff;
-      padding: 28px 20px 24px;
-      box-shadow: var(--shadow);
-    }
-
-    .container {
-      max-width: 1080px;
+    .wrap {
+      max-width: 960px;
       margin: 0 auto;
-      padding: 0 16px;
-    }
-
-    .top-badge-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin-bottom: 10px;
-    }
-
-    .badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      background: rgba(255, 255, 255, 0.16);
-      border: 1px solid rgba(255, 255, 255, 0.28);
-      padding: 4px 12px;
-      border-radius: 999px;
-      font-size: 0.85rem;
-      font-weight: 600;
-    }
-
-    h1 {
-      margin: 0 0 8px;
-      font-size: clamp(1.5rem, 3vw, 2.1rem);
-      font-weight: 800;
-      letter-spacing: -0.02em;
-    }
-
-    .subtitle {
-      margin: 0;
-      color: rgba(255, 255, 255, 0.92);
-      font-size: 0.98rem;
-    }
-
-    .toolbar {
-      margin: 20px auto 12px;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      align-items: center;
-      justify-content: space-between;
-    }
-
-    .tabs {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-    }
-
-    .tab-btn {
-      border: 1px solid var(--border);
-      background: var(--surface);
-      color: var(--text);
-      padding: 9px 14px;
+      background: #ffffff;
+      padding: 28px;
       border-radius: 10px;
-      font-size: 0.9rem;
-      font-weight: 600;
-      cursor: pointer;
-      transition: all 0.18s ease;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
     }
 
-    .tab-btn:hover {
-      border-color: var(--primary);
-      color: var(--primary);
-    }
-
-    .tab-btn.active {
-      background: var(--primary);
-      color: #fff;
-      border-color: var(--primary);
-    }
-
-    .search-box {
-      position: relative;
-      min-width: 240px;
-      flex: 0 1 300px;
-    }
-
-    .search-box input {
-      width: 100%;
-      padding: 9px 14px;
-      border-radius: 10px;
-      border: 1px solid var(--border);
-      background: var(--surface);
-      font-size: 0.92rem;
-      color: var(--text);
-      outline: none;
-    }
-
-    .search-box input:focus {
-      border-color: var(--primary);
-      box-shadow: 0 0 0 3px rgba(29, 78, 216, 0.12);
-    }
-
-    main {
-      padding-bottom: 48px;
-    }
-
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: 16px;
-      margin-top: 12px;
-    }
-
-    .card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 20px;
-      box-shadow: var(--shadow);
-    }
-
-    .card.full-width {
-      grid-column: 1 / -1;
-    }
-
-    .card-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 10px;
-      margin-bottom: 12px;
-      padding-bottom: 10px;
-      border-bottom: 1px solid var(--border);
-    }
-
-    .step-title {
-      margin: 0;
-      font-size: 1.12rem;
+    .notice {
+      margin-bottom: 14px;
       font-weight: 700;
-      color: var(--text);
     }
 
-    .step-tag {
-      font-size: 0.78rem;
-      font-weight: 700;
-      padding: 3px 9px;
-      border-radius: 999px;
-      background: var(--primary-light);
-      color: var(--primary);
-      white-space: nowrap;
+    h2 {
+      margin: 24px 0 10px;
+      font-size: 1.15rem;
+      border-bottom: 1px solid #e5e7eb;
+      padding-bottom: 4px;
     }
 
-    .step-tag.green {
-      background: var(--accent-light);
-      color: var(--accent);
-    }
-
-    .step-tag.amber {
-      background: var(--warn-light);
-      color: var(--warn);
-    }
-
-    ul.clean-list {
-      margin: 0;
-      padding-left: 18px;
-    }
-
-    ul.clean-list li {
-      margin-bottom: 7px;
-    }
-
-    .callout {
-      margin-top: 12px;
-      padding: 12px 14px;
-      border-radius: 10px;
-      background: var(--surface-soft);
-      border-left: 4px solid var(--primary);
-      font-size: 0.92rem;
-    }
-
-    .callout.warn {
-      background: var(--warn-light);
-      border-left-color: var(--warn);
+    p {
+      margin: 6px 0;
     }
 
     table {
       width: 100%;
       border-collapse: collapse;
-      margin-top: 10px;
-      font-size: 0.9rem;
+      margin: 10px 0 14px;
+      font-size: 0.95rem;
     }
 
-    th, td {
-      border: 1px solid var(--border);
-      padding: 9px 10px;
+    th,
+    td {
+      border: 1px solid #cbd5e1;
+      padding: 8px 10px;
       text-align: left;
       vertical-align: top;
     }
 
     th {
-      background: var(--surface-soft);
+      background: #f1f5f9;
       font-weight: 700;
     }
 
-    code {
-      background: var(--surface-soft);
-      padding: 2px 6px;
-      border-radius: 6px;
-      font-family: Consolas, Monaco, monospace;
-      font-size: 0.88em;
-      color: #0f172a;
+    .heatmap-box {
+      margin: 12px 0;
     }
 
-    .calc-box {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      align-items: center;
-      margin-top: 12px;
-      padding: 14px;
-      background: var(--surface-soft);
-      border-radius: 12px;
+    .heatmap-box img {
+      display: block;
+      max-width: 100%;
+      height: auto;
+      border: 1px solid #cbd5e1;
     }
 
-    .calc-box label {
-      font-size: 0.9rem;
-      font-weight: 600;
-    }
-
-    .calc-box input {
-      width: 120px;
-      padding: 7px 10px;
-      border-radius: 8px;
-      border: 1px solid var(--border);
-      font-size: 0.92rem;
-    }
-
-    .calc-box button {
-      padding: 8px 14px;
-      border: none;
-      border-radius: 8px;
-      background: var(--accent);
-      color: #fff;
+    .highlight-red {
+      color: #dc2626;
       font-weight: 700;
-      cursor: pointer;
-    }
-
-    .calc-result {
-      font-weight: 700;
-      color: var(--text);
-      font-size: 0.95rem;
-    }
-
-    .checklist-item {
-      display: flex;
-      align-items: flex-start;
-      gap: 10px;
-      padding: 8px 10px;
-      border-radius: 8px;
-      background: var(--surface-soft);
-      margin-bottom: 8px;
-      cursor: pointer;
-    }
-
-    .checklist-item input {
-      margin-top: 4px;
-      transform: scale(1.15);
-      cursor: pointer;
-    }
-
-    .checklist-item.done span {
-      text-decoration: line-through;
-      color: var(--muted);
-    }
-
-    .hidden {
-      display: none !important;
-    }
-
-    @media (max-width: 600px) {
-      .search-box {
-        flex: 1 1 100%;
-      }
     }
   </style>
 </head>
 <body>
-  <header>
-    <div class="container">
-      <div class="top-badge-row">
-        <span class="badge">KT AICE 주니어</span>
-        <span class="badge">합격 기준: 80점 이상</span>
-        <span class="badge">시험 시간: 60분</span>
-      </div>
-      <h1>시험 직전 핵심 요약 노트</h1>
-      <p class="subtitle">오른쪽 화면 시험 지시 문항을 천천히 꼼꼼히 읽고, 전처리·딥러닝·시각화 해석 기준을 빠르게 점검하세요.</p>
+  <div class="wrap">
+    <div class="notice">★ 오른쪽 화면에 있는 시험 지시 문항을 천천히 꼼꼼히 읽고 시험 보기</div>
+    <div class="notice">★ 80점 이상 합격 / 시험시간 60분</div>
+
+    <h2>1. 종속변수 찾기</h2>
+    <p>○○을 예측 하려고 한다 라는 문구가 있으면 예측 하려는 것이 종속 변수 이다</p>
+
+    <h2>2. 결측치 대체 (missing)</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>종속변수</th>
+          <th>수치형 데이터</th>
+          <th>문자형(객체) 데이터</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>결측치 대체 작업 하지 않는다</td>
+          <td>중앙값(median) 또는 평균값</td>
+          <td>최빈값(most-frequent)</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p>결측치 처리 이전 칼럼은 삭제 또는 딥러닝 학습시 제외변수로 뺀다 (지시사항에 있음)</p>
+    <p>모든 컬럼의 최빈값이 1또는 0으로 분포되고 특정 데이터 하나만 분포 범위값이 클 경우</p>
+    <p>해당 데이터는 scale조정에서 stategy -&gt; Min-Max Scaler 로 처리한다 (지시사항에 있음)</p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>최빈값 (상위 5개) Q</th>
+          <th>값</th>
+          <th>빈도</th>
+          <th>비율</th>
+          <th>최빈값 (상위 5개) Q</th>
+          <th>값</th>
+          <th>빈도</th>
+          <th>비율</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td></td>
+          <td>4</td>
+          <td>38</td>
+          <td>37.62%</td>
+          <td></td>
+          <td>0</td>
+          <td>65</td>
+          <td>64.36%</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>2</td>
+          <td>27</td>
+          <td>26.73%</td>
+          <td></td>
+          <td>1</td>
+          <td>36</td>
+          <td>35.64%</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>0</td>
+          <td>23</td>
+          <td>22.77%</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>6</td>
+          <td>10</td>
+          <td>9.90%</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>8</td>
+          <td>2</td>
+          <td>1.98%</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2>3. 딥러닝 학습</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>output 컬럼</th>
+          <th>input컬럼</th>
+          <th>제외컬럼</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>종속변수</td>
+          <td>종속변수에 영향을 주는 변수</td>
+          <td>종속변수에 영향을 주지 않는 변수</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p>예) 3-2반의 국어 성적 데이터이다 학번, 이름, 국어점수, 공부시간, 수면시간에 대한 정보이고 국어점수를 예측 하려고 한다</p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>output 컬럼</th>
+          <th>input컬럼</th>
+          <th>제외컬럼</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>국어성적</td>
+          <td>공부시간, 수면시간</td>
+          <td>학번, 이름</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2>4. output 컬럼</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>구분</th>
+          <th>예시</th>
+          <th>데이터유형</th>
+          <th>디코더선택</th>
+          <th>활성화 함수</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>분류</td>
+          <td>1등급, 2등급, A형, B형, 포유류, 조류.펭귄종류,붓꽃종류 합격.불합격</td>
+          <td>Category</td>
+          <td>classifier</td>
+          <td>softmax(우선)<br />sigmoid</td>
+        </tr>
+        <tr>
+          <td>회귀</td>
+          <td>키, 몸무게, 점수, 가격....</td>
+          <td>Numerical</td>
+          <td>regressor</td>
+          <td>linear</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2>5. Input 컬럼</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>object(범주형)</th>
+          <th>sparse</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td></td>
+          <td></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2>6. [시각화분석]</h2>
+    <div class="heatmap-box">
+      <img id="heatmapImg" src="heatmap.png" alt="상관관계 히트맵" />
     </div>
-  </header>
+    <p>예) 값이 아닌 변수명을 작성하는 경우가 많음 <span class="highlight-red">(지시사항에 있음)</span></p>
 
-  <div class="container">
-    <div class="toolbar">
-      <div class="tabs" id="tabBar">
-        <button class="tab-btn active" data-filter="all">전체 보기</button>
-        <button class="tab-btn" data-filter="preprocess">1~2. 변수·결측치·스케일</button>
-        <button class="tab-btn" data-filter="model">3~5. 딥러닝 입출력</button>
-        <button class="tab-btn" data-filter="viz">6~7. 시각화·저장</button>
-        <button class="tab-btn" data-filter="check">시험 직전 체크</button>
-      </div>
-      <div class="search-box">
-        <input type="text" id="searchInput" placeholder="키워드 검색 (예: 결측치, softmax, 상관관계)" />
-      </div>
-    </div>
+    <table>
+      <thead>
+        <tr>
+          <th>양의 상관관계(포유)</th>
+          <th>음의 상관관계(포유)</th>
+          <th>가장 강한 상관관계(포유) [절댓값 기준]</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>0.879 (털)</td>
+          <td>-0.939 (알)</td>
+          <td>-0.939 (알)</td>
+        </tr>
+      </tbody>
+    </table>
 
-    <main>
-      <div class="grid" id="cardGrid">
-        <!-- 1. 종속변수 찾기 -->
-        <article class="card searchable" data-category="preprocess">
-          <div class="card-header">
-            <h2 class="step-title">1. 종속변수 찾기</h2>
-            <span class="step-tag">핵심 기준</span>
-          </div>
-          <ul class="clean-list">
-            <li><strong>"○○을 예측하려고 한다"</strong> 문구가 나오면, 예측하려는 대상이 <strong>종속변수</strong>입니다.</li>
-            <li>문제 지시사항에 명시된 예측 대상 컬럼을 정확히 먼저 파악하세요.</li>
-          </ul>
-          <div class="callout">
-            예시) "국어점수를 예측하려고 한다" → 종속변수는 <strong>국어점수</strong>
-          </div>
-        </article>
+    <p>0에 가까울수록 두 변수 사이의 선형 상관관계가 낮다(거의 없다)라고 분석한다.</p>
 
-        <!-- 2. 결측치 대체 및 스케일 조정 -->
-        <article class="card searchable" data-category="preprocess">
-          <div class="card-header">
-            <h2 class="step-title">2. 결측치 대체 &amp; 스케일 조정</h2>
-            <span class="step-tag amber">주의 필수</span>
-          </div>
-          <ul class="clean-list">
-            <li><strong>종속변수:</strong> 결측치 대체 작업을 하지 않습니다.</li>
-            <li><strong>수치형 데이터:</strong> <code>중앙값(median)</code> 또는 <code>평균값</code>으로 대체(중앙값이 더 안정적).</li>
-            <li><strong>문자형(객체) 데이터:</strong> <code>최빈값(most-frequent)</code>으로 대체.</li>
-            <li>결측치 처리 전 불필요 컬럼은 삭제하거나 학습 시 <strong>제외변수</strong>로 뺍니다(지시사항 확인).</li>
-          </ul>
-          <div class="callout warn">
-            <strong>스케일 조정 메모:</strong> 대부분의 컬럼이 0/1 분포이고 특정 컬럼 값 범위가 크거나 지시사항에 명시된 경우, <code>Min-Max Scaler</code> 등 지시된 방식(<code>strategy</code>)으로 처리합니다.
-          </div>
-        </article>
-
-        <!-- 3. 딥러닝 학습 변수 구분 -->
-        <article class="card searchable" data-category="model">
-          <div class="card-header">
-            <h2 class="step-title">3. 딥러닝 학습 변수 구분</h2>
-            <span class="step-tag">구조 이해</span>
-          </div>
-          <table>
-            <thead>
-              <tr>
-                <th>구분</th>
-                <th>역할</th>
-                <th>국어 성적 예시</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><strong>output 컬럼</strong></td>
-                <td>종속변수(예측 대상)</td>
-                <td><code>국어성적</code></td>
-              </tr>
-              <tr>
-                <td><strong>input 컬럼</strong></td>
-                <td>종속변수에 영향을 주는 변수</td>
-                <td><code>공부시간</code>, <code>수면시간</code></td>
-              </tr>
-              <tr>
-                <td><strong>제외컬럼</strong></td>
-                <td>영향이 없거나 식별용인 변수</td>
-                <td><code>학번</code>, <code>이름</code></td>
-              </tr>
-            </tbody>
-          </table>
-        </article>
-
-        <!-- 4. Output 컬럼 설정 -->
-        <article class="card searchable" data-category="model">
-          <div class="card-header">
-            <h2 class="step-title">4. Output 컬럼 설정</h2>
-            <span class="step-tag green">분류 vs 회귀</span>
-          </div>
-          <table>
-            <thead>
-              <tr>
-                <th>문제 유형</th>
-                <th>예시</th>
-                <th>데이터 유형</th>
-                <th>디코더</th>
-                <th>활성화 함수</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><strong>분류</strong></td>
-                <td>등급, 혈액형, 생물 종, 합격/불합격</td>
-                <td><code>Category</code></td>
-                <td><code>classifier</code></td>
-                <td><code>softmax</code>(우선), <code>sigmoid</code></td>
-              </tr>
-              <tr>
-                <td><strong>회귀</strong></td>
-                <td>키, 몸무게, 점수, 가격 등</td>
-                <td><code>Numerical</code></td>
-                <td><code>regressor</code></td>
-                <td><code>linear</code></td>
-              </tr>
-            </tbody>
-          </table>
-        </article>
-
-        <!-- 5. Input 컬럼 -->
-        <article class="card searchable" data-category="model">
-          <div class="card-header">
-            <h2 class="step-title">5. Input 컬럼 확인</h2>
-            <span class="step-tag">입력 특성</span>
-          </div>
-          <ul class="clean-list">
-            <li>입력 컬럼의 자료형(<code>object</code> 범주형, 수치형, <code>sparse</code> 등)과 전처리 상태를 확인합니다.</li>
-            <li>문자형(<code>object</code>) 컬럼 처리 및 제외 여부는 문제 지시사항을 반드시 따릅니다.</li>
-          </ul>
-        </article>
-
-        <!-- 6. 시각화 분석 (상관관계) -->
-        <article class="card full-width searchable" data-category="viz">
-          <div class="card-header">
-            <h2 class="step-title">6. 시각화 분석 (상관관계 히트맵)</h2>
-            <span class="step-tag">해석 핵심</span>
-          </div>
-          <ul class="clean-list">
-            <li><strong>양의 상관관계:</strong> 값이 양수(<code>+</code>)로 <code>1</code>에 가까울수록 함께 증가하는 경향이 큽니다. (예: <code>포유</code> 기준 <code>0.879 (털)</code>)</li>
-            <li><strong>음의 상관관계:</strong> 값이 음수(<code>-</code>)로 <code>-1</code>에 가까울수록 반대 방향으로 움직이는 경향이 큽니다. (예: <code>포유</code> 기준 <code>-0.939 (알)</code>)</li>
-            <li><strong>가장 강한 상관관계(절댓값 기준):</strong> 부호보다 <strong>절댓값 크기</strong>가 큰 변수를 선택합니다. (예: <code>-0.939 (알)</code>)</li>
-            <li><strong>0에 가까운 값:</strong> 두 변수 간 선형 상관관계가 낮다(거의 없다)고 분석합니다.</li>
-            <li>답안 작성 시 문제 지시사항에 따라 <strong>값</strong>을 적는지 <strong>변수명</strong>을 적는지 꼭 확인하세요.</li>
-          </ul>
-
-          <div class="calc-box">
-            <label for="corrInput">상관계수 바로 판별기:</label>
-            <input type="number" id="corrInput" step="0.001" min="-1" max="1" placeholder="-0.939" />
-            <button type="button" id="corrBtn">판별하기</button>
-            <span class="calc-result" id="corrResult">상관계수(-1 ~ 1)를 입력해 보세요.</span>
-          </div>
-        </article>
-
-        <!-- 7. 저장 규칙 -->
-        <article class="card searchable" data-category="viz">
-          <div class="card-header">
-            <h2 class="step-title">7. 데이터 가공 후 &amp; 딥러닝 학습 후 저장</h2>
-            <span class="step-tag amber">파일명 주의</span>
-          </div>
-          <ul class="clean-list">
-            <li>데이터 가공 후 저장, 딥러닝 학습 후 저장 단계에서 <strong>원본과 다른 새 이름</strong>으로 저장합니다.</li>
-            <li><strong>꼭! 이름 뒤에 숫자 또는 영문</strong>을 붙여 구분 저장하세요.</li>
-          </ul>
-        </article>
-
-        <!-- 시험 직전 체크리스트 -->
-        <article class="card searchable" data-category="check">
-          <div class="card-header">
-            <h2 class="step-title">시험 직전 60분 체크리스트</h2>
-            <span class="step-tag green">합격 80점+</span>
-          </div>
-          <div id="checklist">
-            <label class="checklist-item">
-              <input type="checkbox" />
-              <span>오른쪽 지시 문항을 끝까지 읽고 종속변수와 제외변수를 확인했다.</span>
-            </label>
-            <label class="checklist-item">
-              <input type="checkbox" />
-              <span>종속변수는 결측치 대체를 하지 않고, 수치형/문자형 기준을 지켰다.</span>
-            </label>
-            <label class="checklist-item">
-              <input type="checkbox" />
-              <span>분류/회귀에 맞게 디코더와 활성화 함수를 선택했다.</span>
-            </label>
-            <label class="checklist-item">
-              <input type="checkbox" />
-              <span>상관관계 문제에서 절댓값 기준과 지시사항(변수명/값)을 확인했다.</span>
-            </label>
-            <label class="checklist-item">
-              <input type="checkbox" />
-              <span>저장 파일명 뒤에 숫자나 영문을 넣어 다른 이름으로 저장했다.</span>
-            </label>
-          </div>
-        </article>
-      </div>
-    </main>
+    <h2>7. 데이터 가공후 저장, 딥러닝 학습후 저장 [꼭! 이름뒤에 숫자또는 영문 넣고 다른 이름 저장]</h2>
   </div>
 
   <script>
-    const tabButtons = document.querySelectorAll(".tab-btn");
-    const cards = document.querySelectorAll(".searchable");
-    const searchInput = document.getElementById("searchInput");
-    const corrInput = document.getElementById("corrInput");
-    const corrBtn = document.getElementById("corrBtn");
-    const corrResult = document.getElementById("corrResult");
-
-    let activeCategory = "all";
-
-    function applyFilters() {
-      const keyword = searchInput.value.trim().toLowerCase();
-
-      cards.forEach((card) => {
-        const category = card.dataset.category;
-        const text = card.innerText.toLowerCase();
-        const matchesCategory = activeCategory === "all" || category === activeCategory;
-        const matchesKeyword = !keyword || text.includes(keyword);
-
-        if (matchesCategory && matchesKeyword) {
-          card.classList.remove("hidden");
-        } else {
-          card.classList.add("hidden");
-        }
-      });
-    }
-
-    tabButtons.forEach((btn) => {
-      btn.addEventListener("click", () => {
-        tabButtons.forEach((b) => b.classList.remove("active"));
-        btn.classList.add("active");
-        activeCategory = btn.dataset.filter;
-        applyFilters();
-      });
-    });
-
-    searchInput.addEventListener("input", applyFilters);
-
-    function evaluateCorrelation() {
-      const val = parseFloat(corrInput.value);
-      if (Number.isNaN(val) || val < -1 || val > 1) {
-        corrResult.textContent = "-1.000 ~ 1.000 사이의 숫자를 입력해 주세요.";
-        return;
-      }
-
-      const absVal = Math.abs(val);
-      const direction =
-        val > 0 ? "양의 상관관계(+)" : val < 0 ? "음의 상관관계(-)" : "상관관계 없음(0)";
-
-      let strength = "선형 상관관계가 매우 낮음(거의 없음)";
-      if (absVal >= 0.7) {
-        strength = "매우 강한 선형 상관관계";
-      } else if (absVal >= 0.4) {
-        strength = "뚜렷한/중간 이상 선형 상관관계";
-      } else if (absVal >= 0.2) {
-        strength = "약한 선형 상관관계";
-      }
-
-      corrResult.textContent = `${direction} | 절댓값: ${absVal.toFixed(3)} → ${strength}`;
-    }
-
-    corrBtn.addEventListener("click", evaluateCorrelation);
-    corrInput.addEventListener("keydown", (e) => {
-      if (e.key === "Enter") evaluateCorrelation();
-    });
-
-    document.querySelectorAll(".checklist-item input[type='checkbox']").forEach((cb) => {
-      cb.addEventListener("change", (e) => {
-        const label = e.target.closest(".checklist-item");
-        label.classList.toggle("done", e.target.checked);
-      });
+    const heatmapImg = document.getElementById("heatmapImg");
+    heatmapImg.addEventListener("error", () => {
+      heatmapImg.alt = "이미지 파일을 찾을 수 없습니다. src='heatmap.png' 경로를 확인해 주세요.";
     });
   </script>
 </body>
 </html>
+```[cite: 6, 7]
